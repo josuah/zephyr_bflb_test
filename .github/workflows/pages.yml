@@ -1,0 +1,48 @@
+name: Deploy test result html
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install west
+        run: |
+          python -m venv .venv
+          . ./.venv/bin/activate
+          pip install west ninja
+      - name: Clone with west
+        run: |
+          . ./.venv/bin/activate
+          west init -m ${{ github.server_url }}/${{ github.repository }}
+          west update --fetch-opt=--depth=1
+      - name: Build the HTML
+        run: |
+          . ./.venv/bin/activate
+          west bflb-test html
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

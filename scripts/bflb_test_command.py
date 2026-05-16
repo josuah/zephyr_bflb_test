@@ -278,7 +278,7 @@ class BflbTestCommand(WestCommand):
     def subcmd_html(self, args):
         os.makedirs('build', exist_ok=True)
 
-        with open(self.repo_path('build/index.html'), 'w+') as f:
+        with open('build/index.html', 'w+') as f:
             self.html_dump_file(f, self.repo_path('docs/page_header.html'));
             self.html_content(f)
             self.html_dump_file(f, self.repo_path('docs/page_footer.html'));
