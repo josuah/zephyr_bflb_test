@@ -24,7 +24,6 @@ cmd="$cmd --west-flash=--dev-id=$serial"
 # bflb-mcu-tool-uart will leave the board with RTS set to logic low (i.e. 3.3V).
 # When connected to RESET, this holds it until we set it to logic high (i.e. 0.0V)
 # with i.e. picocom or another command
-#cmd="$cmd --device-serial-pty=picocom,--baud=115200,--lower-rts,$serial"
 cmd="$cmd --device-serial=$serial"
 
 # Print the command and run it

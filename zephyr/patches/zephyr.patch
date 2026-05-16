@@ -1,0 +1,34 @@
+From 460cf17ac24a244f1c68b367aabec28b3f6790f5 Mon Sep 17 00:00:00 2001
+From: Josuah Demangeon <me@josuah.net>
+Date: Sat, 16 May 2026 02:37:22 +0200
+Subject: [PATCH] adjust ESP32 serial RTS/DTR for BFLB test rig
+
+---
+ scripts/pylib/twister/twisterlib/handlers.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/scripts/pylib/twister/twisterlib/handlers.py b/scripts/pylib/twister/twisterlib/handlers.py
+index 96a6e5bd6ab..1d29ae73dd7 100755
+--- a/scripts/pylib/twister/twisterlib/handlers.py
++++ b/scripts/pylib/twister/twisterlib/handlers.py
+@@ -763,7 +763,7 @@ class DeviceHandler(Handler):
+                 if serial_pty:
+                     ser_pty_process = self._start_serial_pty(serial_pty, ser_pty_master)
+                     ser.open()
+-                elif runner == "esp32":
++                elif runner == "esp32" or True:
+                     # Apply ESP32-specific RTS/DTR reset logic
+                     logger.debug("Applying ESP32 RTS/DTR reset sequence")
+ 
+@@ -774,7 +774,7 @@ class DeviceHandler(Handler):
+                     ser.open()
+ 
+                     # Reset pulse: IO0=LOW (DTR=False), EN=LOW (RTS=True)
+-                    ser.dtr = False
++                    ser.dtr = True
+                     ser.rts = True
+                     time.sleep(0.1)
+ 
+-- 
+2.54.0
+

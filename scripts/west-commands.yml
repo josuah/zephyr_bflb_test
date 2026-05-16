@@ -1,0 +1,6 @@
+west-commands:
+  - file: scripts/bflb_test_command.py
+    commands:
+      - name: bflb-test
+        class: BflbTestCommand
+        help: BouffaloLab test rig control

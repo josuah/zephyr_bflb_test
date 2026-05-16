@@ -21,29 +21,30 @@ west init -m git@github.com:josuah/zephyr_test_rig
 west update
 ```
 
-You need to patch twister for DTR/RTS handling:
+You need to patch twister for DTR/RTS handling
+(note that `west patch clean` might silently discard your uncommitted data):
 
 ```
 west patch apply
 ```
 
-Then you can use the `west bflb` commands.
-
 ## Running tests
 
-[[[ These are not implemented yet ]]]
+Example session:
 
-- `west bflb-rig init <name>` initate your test rig using `west config`.
-  This name will be used by other commands.
+```
+# Initialize the rig
+west bflb-test init rig0
 
-- `west bflb-rig add <board> <serial>` add a board name
-  and serial (i.e. `/dev/ttyACM0`) to your own hardware map file in the repo.
+# Add two boards
+west bflb-test set /dev/ttyACM0 ai_m61_32s_kit
+west bflb-test set /dev/ttyACM1 ai_wb2_12f_kit
 
-- `west bflb-rig run <extra-twister-args>...` will run twister with default
-  arguments and store the results under a standard name.
+# Run various tests, results will be stored in the repo
+west bflb-test run -- -T samples/hello_world/ --log-level DEBUG
 
-- `west bflb-rig html` will generate an HTML report of all the tests
-  currently stored, for use in combination with static website generators.
+# Publish the tests results
+west bflb-test push
+```
 
-- `west bflb-rig push` will git commit/push the results, so that they can be
-  visualized online.
+See `west bflb-test` help text for full usage.

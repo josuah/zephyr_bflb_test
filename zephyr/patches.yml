@@ -1,0 +1,10 @@
+checkout-command: git checkout .
+clean-command: git clean -d -f -x
+patches:
+  - author: Josuah Demangeon
+    email: me@josuah.net
+    date: '2026-05-16'
+    module: zephyr
+    path: zephyr.patch
+    sha256sum: f6fe81c48abfd5ddfb495edae790f99746e165f162b859a95c1fc3269a8ab355
+    upstreamable: false
