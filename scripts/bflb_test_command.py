@@ -148,7 +148,7 @@ class BflbTestCommand(WestCommand):
             self.error(f'command {result.args} failed with status {result.returncode}')
 
         dir = self.repo_path(f'results/{self.rig_name()}')
-        filename = time.strftime('date_%Y_%m_%d_time_%H_%M_%s_utc.json')
+        filename = time.strftime('twister.%s.json')
 
         os.makedirs(dir, exist_ok=True)
 
