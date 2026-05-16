@@ -27,9 +27,41 @@ You need to patch twister for DTR/RTS handling
 west patch apply
 ```
 
-## Debugging
+## Plugging
 
-Here is a pure-twister command that is expected to do something:
+Example:
+
+![](docs/test_rig_diagram.png)
+
+![](docs/test_rig_example.png)
+
+Connecting an USB UART adapter to a board:
+
+```
+-------------.                         .--------------
+            === GND ------------- GND ===
+            === 3V3 ------------- 3V3 ===
+   USB      === TX --------------- RX ===     DUT
+   UART     === RX --------------- TX ===
+            === RTS ---------- RESETN ===
+            === DTR ------------ BOOT ===
+-------------'                         '--------------
+```
+
+**Using the WeACT USB-UART, I have to unplug the DTR line, then power the board,
+then plug DTR, or it would not toggle.**
+
+Using `/dev/serial/by-id/...` instead of `/dev/ttyACM0` gives stable names.
+
+## Testing
+
+West flash test command (resetting the board to bootloader mode itself):
+
+```
+west flash --dev-id=/dev/ttyACM0
+```
+
+West twister test comand:
 
 ```
 west twister --device-testing --log-level DEBUG --flash-before \
@@ -37,16 +69,7 @@ west twister --device-testing --log-level DEBUG --flash-before \
    --west-flash=--dev-id=/dev/ttyACM0 --device-serial=/dev/ttyACM0
 ```
 
-It is possible to add `--log-level DEBUG` to the `west bflb-test run` command.
-
-All commands are printed before being run.
-
-It is also possible to test using `west flash --dev-id=/dev/ttyACM0` which is expected
-to reboot the board in bootloader mode on its own.
-
-## Running tests
-
-Example session:
+## Running
 
 ```
 # Initialize the rig
@@ -63,39 +86,11 @@ west bflb-test run -- -T samples/hello_world/ --log-level DEBUG
 west bflb-test push
 ```
 
-See `west bflb-test` help text for full usage.
+## `ai_wb2_12f_kit`
 
-## Rig construction
+When it does not have the `BOOT` pin exposed due to missing parts (DNI).
 
-Example of compact/cheap setup that scales reasonably well:
-
-![](docs/test_rig_diagram.png)
-
-![](docs/test_rig_example.png)
-
-Connection diagram:
-
-```
--------------.                         .--------------
-            === GND ------------- GND ===
-            === 3V3 ------------- 3V3 ===
-   USB      === TX --------------- RX ===     DUT
-   UART     === RX --------------- TX ===
-            === RTS ---------- RESETN ===
-            === DTR ------------ BOOT ===
--------------'                         '--------------
-```
-
-**Using the WeACT USB-UART, I have to unplug the DTR line, then power the board,
-then plug DTR, or it would not toggle.**
-
-Using `/dev/serial/by-id/...` instead of `/dev/ttyACM0`
-
-### `ai_wb2_12f_kit`
-
-This board often does not have the `BOOT` pin exposed due to absent transistors.
-
-An external USB-UART adapter is used instead of the built-in one, and the missing
+An external USB-UART adapter is used instead, and the missing
 BOOT signal is broken out from the module to a pin header.
 
 ![](docs/ai_wb2_12f_kit_rework.jpg)
