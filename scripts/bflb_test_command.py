@@ -4,14 +4,18 @@
 West command for controlling a test rig.
 '''
 
-import time
+import json
 import os
-import subprocess
 import shutil
+import subprocess
 import sys
+import time
 import yaml
 from west.commands import ExtensionCommandError
 from west.commands import WestCommand
+
+REPO_URL = 'https://github.com/josuah/zephyr_bflb_test/'
+ZEPHYR_URL = 'https://github.com/zephyrproject-rtos/zephyr'
 
 class BflbTestCommand(WestCommand):
     '''Class for the bflb-test command'''
@@ -65,6 +69,13 @@ class BflbTestCommand(WestCommand):
 
         return parser
 
+    def do_run(self, args, _):
+        if args.subcmd is None:
+            self.parser.print_help()
+            sys.exit(1)
+        subcmd = getattr(self, 'subcmd_' + args.subcmd)
+        subcmd(args)
+
     def error(self, msg):
         print(f'error: {msg}')
         sys.exit(1)
@@ -84,6 +95,26 @@ class BflbTestCommand(WestCommand):
 
     def repo_path(self, path):
         return os.path.realpath(os.path.dirname(__file__) + '/../' + path)
+
+    def result_load_json(self):
+        rigs = os.listdir(self.repo_path('results'))
+        results = {}
+
+        for rig in rigs:
+            results[rig] = []
+            for result_file in os.listdir(self.repo_path('results/' + rig)):
+                result_path = self.repo_path('results/' + rig + '/' + result_file)
+
+                with open(result_path) as f:
+                    results[rig].append(json.load(f))
+
+        return results
+
+    def result_to_commit(self, result):
+        version = result['environment']['zephyr_version']
+        return version[version.index('g') + 1:]
+
+    # hwmap
 
     def hwmap_path(self):
         return self.repo_path('rigs/' + self.rig_name() + '.hwmap.yml')
@@ -105,6 +136,78 @@ class BflbTestCommand(WestCommand):
     def hwmap_save(self, hwmap):
         with open(self.hwmap_path(), 'w') as f:
             yaml.dump(hwmap, f, default_flow_style=False)
+
+    # html
+
+    def html_dump_file(self, dst_file, src_path):
+        with open(src_path, 'r') as src_file:
+            dst_file.write(src_file.read())
+
+    def html_table_beg(self, f, row):
+        f.write('<table><thead><tr>')
+        for td in row:
+            f.write(f'<td>{td}</td>')
+        f.write('</tr></thead><tbody>\n')
+
+    def html_table_row(self, f, row):
+        f.write(' <tr>')
+        for td in row:
+            f.write(f'<td>{td}</td>')
+        f.write('</tr>\n')
+
+    def html_table_end(self, f):
+        f.write('</tbody></table>\n')
+
+    def html_zephyr_commit(self, hash):
+        return f'<a href="{ZEPHYR_URL}/commit/{hash}">{hash}</a>'
+
+    def html_content(self, f):
+        result_json = self.result_load_json()
+        commit_dates = {}
+        result_table = {}
+
+        self.html_table_beg(f, ('commit', 'commit date', *sorted(result_json.keys())))
+
+        # Collect the useful information from JSON into a single table
+        for rig in result_json.keys():
+            for result in result_json[rig]:
+                commit_hash = self.result_to_commit(result)
+                commit_dates[commit_hash] = result['environment']['commit_date']
+
+                # Build results[commit][rig][id] = testsuite
+                for testsuite in result['testsuites']:
+                    if commit_hash not in result_table:
+                        result_table[commit_hash] = {}
+                    if rig not in result_table[commit_hash]:
+                        result_table[commit_hash][rig] = []
+                    result_table[commit_hash][rig].append(testsuite)
+
+        # Generate an HTML table from this result_table
+        for commit_hash in sorted(result_table, key=lambda s: commit_dates[s]):
+            commit_date = commit_dates[commit_hash]
+            table_row = [self.html_zephyr_commit(commit_hash), commit_date]
+
+            # Generate a table row of results, one column per rig
+            for rig in sorted(result_table[commit_hash].keys()):
+                passing = 0
+                rig_results = result_table[commit_hash][rig]
+                for result in rig_results:
+                    passing += result['status'] == 'passed'
+                table_row.append(f'<a href="#{commit_hash}_{rig}">{passing}/{len(rig_results)}</a>')
+
+            self.html_table_row(f, table_row)
+
+            # Generate a detailed list of each result
+            for rig in sorted(result_table[commit_hash].keys()):
+                f.write(f' <tr id="{commit_hash}_{rig}" class="details"><td colspan=99><ul>\n')
+                for result in result_table[commit_hash][rig]:
+                    f.write(f'  <li><code>{result}</code></li>\n')
+                f.write(' </ul></td></tr>\n')
+
+        self.html_table_end(f)
+
+
+    # subcmd
 
     def subcmd_init(self, args):
         self.config.set('bflb-test.rig', args.name)
@@ -158,11 +261,11 @@ class BflbTestCommand(WestCommand):
         self.git('push', 'origin')
 
     def subcmd_html(self, args):
-        print('html', args)
+        os.makedirs('build', exist_ok=True)
 
-    def do_run(self, args, _):
-        if args.subcmd is None:
-            self.parser.print_help()
-            sys.exit(1)
-        subcmd = getattr(self, 'subcmd_' + args.subcmd)
-        subcmd(args)
+        with open(self.repo_path('build/index.html'), 'w+') as f:
+            self.html_dump_file(f, self.repo_path('docs/page_header.html'));
+            self.html_content(f)
+            self.html_dump_file(f, self.repo_path('docs/page_footer.html'));
+
+        shutil.copyfile(self.repo_path('docs/style.css'), 'build/style.css')

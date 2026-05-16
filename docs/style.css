@@ -1,0 +1,13 @@
+
+table {
+    width: 100%;
+}
+
+tr.details {
+    display: none;
+}
+
+tr.details:target {
+    display: table-row;
+    background: #cceeff;
+}
