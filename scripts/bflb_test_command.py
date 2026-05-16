@@ -70,7 +70,7 @@ class BflbTestCommand(WestCommand):
         sys.exit(1)
 
     def run_cmd(self, *args):
-        print(' '.join(args))
+        print('$ ' + ' '.join(args))
         return subprocess.run(args)
 
     def git(self, *args):
