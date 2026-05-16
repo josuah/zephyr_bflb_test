@@ -1,3 +1,7 @@
+body {
+    font-family: monospace;
+    padding: 10px;
+}
 
 table {
     width: 100%;
@@ -9,7 +13,7 @@ tr.details {
 
 tr.details:target {
     display: table-row;
-    background: #cceeff;
+    background: #ddd;
 }
 
 .tooltip {
@@ -23,4 +27,18 @@ tr.details:target {
 
 :hover > .tooltip {
     visibility: visible;
+}
+
+thead {
+    font-weight: bold;
+}
+
+code, .tooltip {
+    background: #333333;
+    color: white;
+    padding: 5px 10px;
+}
+
+dt, dd {
+    margin: 20px;
 }
