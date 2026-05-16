@@ -158,15 +158,14 @@ class BflbTestCommand(WestCommand):
     def html_table_end(self, f):
         f.write('</tbody></table>\n')
 
-    def html_zephyr_commit(self, hash):
-        return f'<a href="{ZEPHYR_URL}/commit/{hash}">{hash}</a>'
+    def html_zephyr_commit(self, hash, date):
+        tooltip = f'<span class="tooltip">{date}</span>'
+        return f'<a href="{ZEPHYR_URL}/commit/{hash}">{hash} {tooltip}</a>'
 
     def html_content(self, f):
         result_json = self.result_load_json()
         commit_dates = {}
-        result_table = {}
-
-        self.html_table_beg(f, ('commit', 'commit date', *sorted(result_json.keys())))
+        table_content = {}
 
         # Collect the useful information from JSON into a single table
         for rig in result_json.keys():
@@ -174,38 +173,54 @@ class BflbTestCommand(WestCommand):
                 commit_hash = self.result_to_commit(result)
                 commit_dates[commit_hash] = result['environment']['commit_date']
 
-                # Build results[commit][rig][id] = testsuite
+                # Build results[commit][testsuite] = testsuite
                 for testsuite in result['testsuites']:
-                    if commit_hash not in result_table:
-                        result_table[commit_hash] = {}
-                    if rig not in result_table[commit_hash]:
-                        result_table[commit_hash][rig] = []
-                    result_table[commit_hash][rig].append(testsuite)
+                    name = testsuite['name']
+                    testsuite['rig'] = rig
+                    if commit_hash not in table_content:
+                        table_content[commit_hash] = {}
+                    if name not in table_content[commit_hash]:
+                        table_content[commit_hash][name] = []
+                    table_content[commit_hash][name].append(testsuite)
 
-        # Generate an HTML table from this result_table
-        for commit_hash in sorted(result_table, key=lambda s: commit_dates[s]):
+        # Generate the flat list of all tests
+        table_columns = set()
+        for commit in table_content:
+            for scenario in table_content[commit]:
+                table_columns.add(scenario)
+        table_columns = sorted(table_columns)
+
+        self.html_table_beg(f, ('commit', *table_columns))
+
+        # Generate an HTML table from this table_content
+        for commit_hash in sorted(table_content, key=lambda s: commit_dates[s]):
             commit_date = commit_dates[commit_hash]
-            table_row = [self.html_zephyr_commit(commit_hash), commit_date]
+            table_row = [self.html_zephyr_commit(commit_hash, commit_date)]
 
-            # Generate a table row of results, one column per rig
-            for rig in sorted(result_table[commit_hash].keys()):
+            # Generate a table row of results, one column per test type
+            for column in table_columns:
+                if column not in table_content[commit_hash]:
+                    table_row.append('-')
+                    continue
                 passing = 0
-                rig_results = result_table[commit_hash][rig]
-                for result in rig_results:
+                results = table_content[commit_hash][column]
+                for result in results:
                     passing += result['status'] == 'passed'
-                table_row.append(f'<a href="#{commit_hash}_{rig}">{passing}/{len(rig_results)}</a>')
+                content = f'{passing}/{len(results)}'
+                table_row.append(f'<a href="#{commit_hash}_{column}">{content}</a>')
 
             self.html_table_row(f, table_row)
 
             # Generate a detailed list of each result
-            for rig in sorted(result_table[commit_hash].keys()):
-                f.write(f' <tr id="{commit_hash}_{rig}" class="details"><td colspan=99><ul>\n')
-                for result in result_table[commit_hash][rig]:
+            for column in table_columns:
+                if column not in table_content[commit_hash]:
+                    continue
+                f.write(f' <tr id="{commit_hash}_{column}" class="details"><td colspan=99><ul>\n')
+                for result in table_content[commit_hash][column]:
                     f.write(f'  <li><code>{result}</code></li>\n')
                 f.write(' </ul></td></tr>\n')
 
         self.html_table_end(f)
-
 
     # subcmd
 

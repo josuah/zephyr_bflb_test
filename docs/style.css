@@ -11,3 +11,16 @@ tr.details:target {
     display: table-row;
     background: #cceeff;
 }
+
+.tooltip {
+    visibility: hidden;
+    position: absolute;
+    margin-left: 10px;
+    padding: 0px 10px;
+    background: black;
+    color: white;
+}
+
+:hover > .tooltip {
+    visibility: visible;
+}
