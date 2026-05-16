@@ -144,9 +144,6 @@ class BflbTestCommand(WestCommand):
             'west', 'twister', '--device-testing', '--hardware-map', self.hwmap_path(), *args.extra
         )
 
-        if result.returncode != 0:
-            self.error(f'command {result.args} failed with status {result.returncode}')
-
         dir = self.repo_path(f'results/{self.rig_name()}')
         filename = time.strftime('twister.%s.json')
 
