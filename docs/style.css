@@ -29,6 +29,10 @@ tr.details:target {
     visibility: visible;
 }
 
+pre {
+    white-space: pre-wrap;
+}
+
 thead {
     font-weight: bold;
 }

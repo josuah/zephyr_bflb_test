@@ -139,12 +139,21 @@ class BflbTestCommand(WestCommand):
 
     def fields(self, key, selection=None):
         '''Sorted set of all possible values for "testsuite[key]"'''
-        return sorted(set(([x[key] for x in selection or self.testsuites])))
+        if selection is None:
+            selection = self.testsuites
+        return sorted(set([x[key] for x in selection]))
 
     def select(self, key, value, selection=None):
         '''Select a subset of testsuites results for which "testsuite[key] == value"'''
-        return [x for x in selection or self.testsuites if x[key] == value]
+        if selection is None:
+            selection = self.testsuites
+        return [x for x in selection if x[key] == value]
+
     # html
+
+    def html_testsuite(self, f, testsuite, key):
+        if key in testsuite:
+            f.write(f' <code>{key}: {testsuite[key]}</code>')
 
     def html_dump_file(self, dst_file, src_path):
         with open(src_path, 'r') as src_file:
@@ -208,11 +217,12 @@ class BflbTestCommand(WestCommand):
 
                     for testsuite in date_name_board_sel:
                         f.write('   <dd>')
-                        f.write(f' <code>status: {testsuite["status"]}</code>')
-                        f.write(f' <code>execution_time: {testsuite["execution_time"]}</code>')
-                        f.write(f' <code>retries: {testsuite["retries"]}</code>')
-                        f.write(f' <code>serial: {testsuite["dut"]}</code>')
-                        f.write(f' <code>rig: {testsuite["rig"]}</code>')
+                        self.html_testsuite(f, testsuite, "name")
+                        self.html_testsuite(f, testsuite, "status")
+                        self.html_testsuite(f, testsuite, "execution_time")
+                        self.html_testsuite(f, testsuite, "retries")
+                        self.html_testsuite(f, testsuite, "dut")
+                        self.html_testsuite(f, testsuite, "rig")
                         if 'log' in testsuite:
                             f.write(f'<pre>{testsuite["log"]}</pre>')
                         f.write('</dd>\n')
