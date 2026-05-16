@@ -26,6 +26,7 @@ class BflbTestCommand(WestCommand):
             'Control a test rig for BouffaloLab testing',
             'Manage a test rig and test results. See the README for an example.'
         )
+        self.testsuites = []
 
     def do_add_parser(self, parser_adder):
         parser = parser_adder.add_parser(
@@ -96,24 +97,6 @@ class BflbTestCommand(WestCommand):
     def repo_path(self, path):
         return os.path.realpath(os.path.dirname(__file__) + '/../' + path)
 
-    def result_load_json(self):
-        rigs = os.listdir(self.repo_path('results'))
-        results = {}
-
-        for rig in rigs:
-            results[rig] = []
-            for result_file in os.listdir(self.repo_path('results/' + rig)):
-                result_path = self.repo_path('results/' + rig + '/' + result_file)
-
-                with open(result_path) as f:
-                    results[rig].append(json.load(f))
-
-        return results
-
-    def result_to_commit(self, result):
-        version = result['environment']['zephyr_version']
-        return version[version.index('g') + 1:]
-
     # hwmap
 
     def hwmap_path(self):
@@ -123,7 +106,7 @@ class BflbTestCommand(WestCommand):
         with open(self.hwmap_path(), 'a+') as f:
             pass
         with open(self.hwmap_path(), 'r') as f:
-            return yaml.safe_load(f)
+            return yaml.safe_from(f)
 
     def hwmap_list(self, hwmap):
         for row in hwmap:
@@ -137,6 +120,30 @@ class BflbTestCommand(WestCommand):
         with open(self.hwmap_path(), 'w') as f:
             yaml.dump(hwmap, f, default_flow_style=False)
 
+    def read_results(self):
+        rigs = os.listdir(self.repo_path('results'))
+
+        for rig in rigs:
+            for json_file in os.listdir(self.repo_path('results/' + rig)):
+                json_path = self.repo_path('results/' + rig + '/' + json_file)
+
+                # Build a flat array of dicts out of the nested JSON structs
+                with open(json_path) as f:
+                    json_data = json.load(f)
+                    for testsuite in json_data['testsuites']:
+                        version = json_data['environment']['zephyr_version']
+                        testsuite['commit_hash'] = version[version.index('g') + 1:]
+                        testsuite['commit_date'] = json_data['environment']['commit_date']
+                        testsuite['rig'] = rig
+                        self.testsuites.append(testsuite)
+
+    def fields(self, key, selection=None):
+        '''Sorted set of all possible values for "testsuite[key]"'''
+        return sorted(set(([x[key] for x in selection or self.testsuites])))
+
+    def select(self, key, value, selection=None):
+        '''Select a subset of testsuites results for which "testsuite[key] == value"'''
+        return [x for x in selection or self.testsuites if x[key] == value]
     # html
 
     def html_dump_file(self, dst_file, src_path):
@@ -155,72 +162,51 @@ class BflbTestCommand(WestCommand):
             f.write(f'<td>{td}</td>')
         f.write('</tr>\n')
 
-    def html_table_end(self, f):
-        f.write('</tbody></table>\n')
+    def html_table_body(self, f):
+        for date in self.fields('commit_date'):
+            date_selection = self.select('commit_date', date)
+            hash = date_selection[0]['commit_hash']
 
-    def html_zephyr_commit(self, hash, date):
-        tooltip = f'<span class="tooltip">{date}</span>'
-        return f'<a href="{ZEPHYR_URL}/commit/{hash}">{hash} {tooltip}</a>'
+            tooltip = f'<span class="tooltip">{date}</span>'
+            first_col = f'<a href="{ZEPHYR_URL}/commit/{hash}">{hash} {tooltip}</a>'
 
-    def html_content(self, f):
-        result_json = self.result_load_json()
-        commit_dates = {}
-        table_content = {}
+            table_row = [first_col]
 
-        # Collect the useful information from JSON into a single table
-        for rig in result_json.keys():
-            for result in result_json[rig]:
-                commit_hash = self.result_to_commit(result)
-                commit_dates[commit_hash] = result['environment']['commit_date']
-
-                # Build results[commit][testsuite] = testsuite
-                for testsuite in result['testsuites']:
-                    name = testsuite['name']
-                    testsuite['rig'] = rig
-                    if commit_hash not in table_content:
-                        table_content[commit_hash] = {}
-                    if name not in table_content[commit_hash]:
-                        table_content[commit_hash][name] = []
-                    table_content[commit_hash][name].append(testsuite)
-
-        # Generate the flat list of all tests
-        table_columns = set()
-        for commit in table_content:
-            for scenario in table_content[commit]:
-                table_columns.add(scenario)
-        table_columns = sorted(table_columns)
-
-        self.html_table_beg(f, ('commit', *table_columns))
-
-        # Generate an HTML table from this table_content
-        for commit_hash in sorted(table_content, key=lambda s: commit_dates[s]):
-            commit_date = commit_dates[commit_hash]
-            table_row = [self.html_zephyr_commit(commit_hash, commit_date)]
-
-            # Generate a table row of results, one column per test type
-            for column in table_columns:
-                if column not in table_content[commit_hash]:
+            # Table row with one column per test
+            for name in self.fields('name'):
+                date_name_selection = self.select('name', name, selection=date_selection)
+                if name not in self.fields('name', selection=date_name_selection):
                     table_row.append('-')
                     continue
-                passing = 0
-                results = table_content[commit_hash][column]
-                for result in results:
-                    passing += result['status'] == 'passed'
-                content = f'{passing}/{len(results)}'
-                table_row.append(f'<a href="#{commit_hash}_{column}">{content}</a>')
+
+                # Find number of different boards that succeeded this test
+                boards = self.fields('platform')
+                num_passing = 0
+                num_total = len(boards)
+                for board in boards:
+                    selection = date_name_selection
+                    selection = self.select('platform', board, selection=selection)
+                    selection = self.select('status', 'passed', selection=selection)
+                    if selection is not None:
+                        num_passing += 1
+
+                table_row.append(f'<a href="#{hash}_{name}">{num_passing}/{num_total}</a>')
 
             self.html_table_row(f, table_row)
 
-            # Generate a detailed list of each result
-            for column in table_columns:
-                if column not in table_content[commit_hash]:
+            # Table row with details for each execution
+            for name in self.fields('name'):
+                date_name_selection = self.select('name', name, selection=date_selection)
+                if name not in self.fields('name', selection=date_name_selection):
                     continue
-                f.write(f' <tr id="{commit_hash}_{column}" class="details"><td colspan=99><ul>\n')
-                for result in table_content[commit_hash][column]:
-                    f.write(f'  <li><code>{result}</code></li>\n')
+
+                f.write(f' <tr id="{hash}_{name}" class="details"><td colspan=99><ul>\n')
+                for testsuite in date_name_selection:
+                    f.write(f'  <li><code>{testsuite}</code></li>\n')
                 f.write(' </ul></td></tr>\n')
 
-        self.html_table_end(f)
+    def html_table_end(self, f):
+        f.write('</tbody></table>\n')
 
     # subcmd
 
@@ -276,11 +262,15 @@ class BflbTestCommand(WestCommand):
         self.git('push', 'origin')
 
     def subcmd_html(self, args):
+        self.read_results()
+
         os.makedirs('build', exist_ok=True)
 
         with open('build/index.html', 'w+') as f:
             self.html_dump_file(f, self.repo_path('docs/page_header.html'));
-            self.html_content(f)
+            self.html_table_beg(f, ('commit', *self.fields('name')))
+            self.html_table_body(f)
+            self.html_table_end(f)
             self.html_dump_file(f, self.repo_path('docs/page_footer.html'));
 
         shutil.copyfile(self.repo_path('docs/style.css'), 'build/style.css')

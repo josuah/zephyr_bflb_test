@@ -13,7 +13,7 @@ It uses one USB UART adapter per board:
 
 Clone with west:
 
-```
+```bash
 mkdir ~/zephyrproject
 cd ~/zephyrproject
 west init -m git@github.com:josuah/zephyr_test_rig
@@ -57,13 +57,13 @@ Using `/dev/serial/by-id/...` instead of `/dev/ttyACM0` gives stable names.
 
 West flash test command (resetting the board to bootloader mode itself):
 
-```
+```bash
 west flash --dev-id=/dev/ttyACM0
 ```
 
 West twister test comand:
 
-```
+```bash
 west twister --device-testing --log-level DEBUG --flash-before \
    --platform ai_m61_32s_kit --scenario samples.basic.helloworld \
    --west-flash=--dev-id=/dev/ttyACM0 --device-serial=/dev/ttyACM0
@@ -71,7 +71,7 @@ west twister --device-testing --log-level DEBUG --flash-before \
 
 ## Running
 
-```
+```bash
 # Initialize the rig
 west bflb-test init rig0
 
