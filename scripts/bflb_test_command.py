@@ -70,11 +70,11 @@ class BflbTestCommand(WestCommand):
         sys.exit(1)
 
     def run_cmd(self, *args):
-        print(' '.join(*args))
-        return subprocess.run(*args)
+        print(' '.join(args))
+        return subprocess.run(args)
 
     def git(self, *args):
-        self.run_cmd('git', '-C', self.repo_path('.'), *args).check_return_code()
+        self.run_cmd('git', '-C', self.repo_path('.'), *args).check_returncode()
 
     def rig_name(self):
         name = self.config.get('bflb-test.rig')
@@ -148,15 +148,15 @@ class BflbTestCommand(WestCommand):
             self.error(f'command {result.args} failed with status {result.returncode}')
 
         dir = self.repo_path(f'results/{self.rig_name()}')
-        file = time.strftime('date_%Y_%m_%d_time_%H_%M_%s_utc.json')
+        filename = time.strftime('date_%Y_%m_%d_time_%H_%M_%s_utc.json')
 
         os.mkdir(dir)
 
-        shutil.copyfile('twister-out/twister.json', dir + '/' + file)
+        shutil.copyfile('twister-out/twister.json', dir + '/' + filename)
 
     def subcmd_push(self, args):
         self.git('add', '.')
-        self.git('commit', '-m', f'publish {self.rig_name()}/{file}')
+        self.git('commit', '-m', f'publish results for {self.rig_name()}')
         self.git('pull', '--rebase')
         self.git('push', 'origin')
 
