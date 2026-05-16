@@ -150,7 +150,7 @@ class BflbTestCommand(WestCommand):
         dir = self.repo_path(f'results/{self.rig_name()}')
         filename = time.strftime('date_%Y_%m_%d_time_%H_%M_%s_utc.json')
 
-        os.mkdir(dir)
+        os.makedirs(dir, exist_ok=True)
 
         shutil.copyfile('twister-out/twister.json', dir + '/' + filename)
 
