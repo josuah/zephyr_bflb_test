@@ -164,18 +164,17 @@ class BflbTestCommand(WestCommand):
 
     def html_table_body(self, f):
         for date in self.fields('commit_date'):
-            date_selection = self.select('commit_date', date)
-            hash = date_selection[0]['commit_hash']
+            date_sel = self.select('commit_date', date)
+            hash = date_sel[0]['commit_hash']
 
             tooltip = f'<span class="tooltip">{date}</span>'
             first_col = f'<a href="{ZEPHYR_URL}/commit/{hash}">{hash} {tooltip}</a>'
-
             table_row = [first_col]
 
             # Table row with one column per test
             for name in self.fields('name'):
-                date_name_selection = self.select('name', name, selection=date_selection)
-                if name not in self.fields('name', selection=date_name_selection):
+                date_name_sel = self.select('name', name, selection=date_sel)
+                if name not in self.fields('name', selection=date_name_sel):
                     table_row.append('-')
                     continue
 
@@ -184,10 +183,10 @@ class BflbTestCommand(WestCommand):
                 num_passing = 0
                 num_total = len(boards)
                 for board in boards:
-                    selection = date_name_selection
+                    selection = date_name_sel
                     selection = self.select('platform', board, selection=selection)
                     selection = self.select('status', 'passed', selection=selection)
-                    if selection is not None:
+                    if selection:
                         num_passing += 1
 
                 table_row.append(f'<a href="#{hash}_{name}">{num_passing}/{num_total}</a>')
@@ -196,14 +195,29 @@ class BflbTestCommand(WestCommand):
 
             # Table row with details for each execution
             for name in self.fields('name'):
-                date_name_selection = self.select('name', name, selection=date_selection)
-                if name not in self.fields('name', selection=date_name_selection):
+                date_name_sel = self.select('name', name, selection=date_sel)
+                if name not in self.fields('name', selection=date_name_sel):
                     continue
 
-                f.write(f' <tr id="{hash}_{name}" class="details"><td colspan=99><ul>\n')
-                for testsuite in date_name_selection:
-                    f.write(f'  <li><code>{testsuite}</code></li>\n')
-                f.write(' </ul></td></tr>\n')
+                f.write(f' <tr id="{hash}_{name}" class="details"><td colspan=99><dl>\n')
+
+                for board in self.fields('platform', selection=date_name_sel):
+                    date_name_board_sel = self.select('platform', board, selection=date_name_sel)
+
+                    f.write(f'  <dt><code>{board}</code></dt>')
+
+                    for testsuite in date_name_board_sel:
+                        f.write('   <dd>')
+                        f.write(f' <code>status: {testsuite["status"]}</code>')
+                        f.write(f' <code>execution_time: {testsuite["execution_time"]}</code>')
+                        f.write(f' <code>retries: {testsuite["retries"]}</code>')
+                        f.write(f' <code>serial: {testsuite["dut"]}</code>')
+                        f.write(f' <code>rig: {testsuite["rig"]}</code>')
+                        if 'log' in testsuite:
+                            f.write(f'<pre>{testsuite["log"]}</pre>')
+                        f.write('</dd>\n')
+
+                f.write(' </dl></td></tr>\n')
 
     def html_table_end(self, f):
         f.write('</tbody></table>\n')
