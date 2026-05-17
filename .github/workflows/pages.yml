@@ -18,24 +18,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Install west
-        run: |
-          python -m venv .venv
-          . ./.venv/bin/activate
-          pip install west ninja
-      - name: Clone with west
-        run: |
-          . ./.venv/bin/activate
-          west init -m ${{ github.server_url }}/${{ github.repository }}
-          west update --fetch-opt=--depth=1
-      - name: Build the HTML
-        run: |
-          . ./.venv/bin/activate
-          west bflb-test html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: build
+          path: html
   deploy:
     environment:
       name: github-pages

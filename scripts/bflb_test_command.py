@@ -232,6 +232,15 @@ class BflbTestCommand(WestCommand):
     def html_table_end(self, f):
         f.write('</tbody></table>\n')
 
+    def html(self):
+        self.read_results()
+        with open('html/index.html', 'w+') as f:
+            self.html_dump_file(f, self.repo_path('html/page_header.html'));
+            self.html_table_beg(f, ('commit', *self.fields('name')))
+            self.html_table_body(f)
+            self.html_table_end(f)
+            self.html_dump_file(f, self.repo_path('html/page_footer.html'));
+
     # subcmd
 
     def subcmd_init(self, args):
@@ -280,21 +289,11 @@ class BflbTestCommand(WestCommand):
         shutil.copyfile('twister-out/twister.json', dir + '/' + filename)
 
     def subcmd_push(self, args):
+        self.git('pull', '--rebase')
+        self.html()
         self.git('add', '.')
         self.git('commit', '-m', f'publish results for {self.rig_name()}')
-        self.git('pull', '--rebase')
         self.git('push', 'origin')
 
     def subcmd_html(self, args):
-        self.read_results()
-
-        os.makedirs('build', exist_ok=True)
-
-        with open('build/index.html', 'w+') as f:
-            self.html_dump_file(f, self.repo_path('docs/page_header.html'));
-            self.html_table_beg(f, ('commit', *self.fields('name')))
-            self.html_table_body(f)
-            self.html_table_end(f)
-            self.html_dump_file(f, self.repo_path('docs/page_footer.html'));
-
-        shutil.copyfile(self.repo_path('docs/style.css'), 'build/style.css')
+        self.html()
