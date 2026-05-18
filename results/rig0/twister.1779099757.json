@@ -1,0 +1,25 @@
+{
+    "environment":{
+        "os":"Linux",
+        "zephyr_version":"v4.4.0-2806-g7f95f5eb7f97",
+        "toolchain":"zephyr/gnu",
+        "commit_date":"2026-05-18T10:21:09+01:00",
+        "run_date":"2026-05-18T10:22:35+00:00",
+        "options":{
+            "help":null,
+            "zephyr_base":null,
+            "quiet":0,
+            "command":"twister",
+            "device_testing":true,
+            "hardware_map":"/home/josuah/z/rig0/zephyr_bflb_test/rigs/rig0.hwmap.yml",
+            "platform":[
+                "ai_wb2_12f_kit",
+                "ai_m61_32s_kit"
+            ],
+            "test":[
+                "drivers.disk.ram"
+            ]
+        }
+    },
+    "testsuites":[]
+}
