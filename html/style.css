@@ -46,3 +46,26 @@ code, .tooltip {
 dt, dd {
     margin: 20px;
 }
+
+table {
+    overflow: scroll;
+    max-width: 1000px;
+}
+
+table {
+    border-spacing: 0px;
+}
+
+table td, table th {
+    padding: 5px 10px;
+}
+
+td:nth-child(1), th:nth-child(1) {
+    position: sticky;
+    left: 0px;
+    background: white;
+}
+
+td[colspan="100%"] {
+    background: #ddd;
+}

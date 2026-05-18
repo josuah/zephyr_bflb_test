@@ -162,7 +162,7 @@ class BflbTestCommand(WestCommand):
     def html_table_beg(self, f, row):
         f.write('<table><thead><tr>')
         for td in row:
-            f.write(f'<td>{td}</td>')
+            f.write(f'<th>{td}</th>')
         f.write('</tr></thead><tbody>\n')
 
     def html_table_row(self, f, row):
@@ -208,7 +208,7 @@ class BflbTestCommand(WestCommand):
                 if name not in self.fields('name', selection=date_name_sel):
                     continue
 
-                f.write(f' <tr id="{hash}_{name}" class="details"><td colspan=99><dl>\n')
+                f.write(f' <tr id="{hash}_{name}" class="details"><td colspan="100%"><dl>\n')
 
                 for board in self.fields('platform', selection=date_name_sel):
                     date_name_board_sel = self.select('platform', board, selection=date_name_sel)
@@ -227,7 +227,7 @@ class BflbTestCommand(WestCommand):
                             f.write(f'<pre>{testsuite["log"]}</pre>')
                         f.write('</dd>\n')
 
-                f.write(' </dl></td></tr>\n')
+                f.write(' </dl></td><td/></tr>\n')
 
     def html_table_end(self, f):
         f.write('</tbody></table>\n')
