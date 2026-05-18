@@ -234,7 +234,7 @@ class BflbTestCommand(WestCommand):
 
     def html(self):
         self.read_results()
-        with open('html/index.html', 'w+') as f:
+        with open(self.repo_path('html/index.html'), 'w+') as f:
             self.html_dump_file(f, self.repo_path('html/page_header.html'));
             self.html_table_beg(f, ('commit', *self.fields('name')))
             self.html_table_body(f)
