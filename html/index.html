@@ -686,7 +686,65 @@ Call Stack (most recent call first):
 
 -- Configuring incomplete, errors occurred!
 </pre></dd>
+   <dd> <code>name: sample.basic.helloworld</code> <code>status: error</code> <code>execution_time: 0.00</code> <code>retries: 0</code> <code>rig: rig0</code><pre>Loading Zephyr default modules (Zephyr base).
+-- Application: /home/josuah/z/rig0/zephyr/samples/hello_world
+-- CMake version: 4.3.2
+-- Found Python3: /home/josuah/z/.venv/bin/python (found suitable version "3.14.5", minimum required is "3.12") found components: Interpreter
+-- Cache files will be written to: /home/josuah/.cache/zephyr
+-- Zephyr version: 4.4.99 (/home/josuah/z/rig0/zephyr)
+-- Found west (found suitable version "1.5.0", minimum required is "0.14.0")
+-- Board: ai_m61_32s_kit, Revision: DEFAULT, qualifiers: bl618m05q2i
+-- Found host-tools: zephyr 1.0.0 (/home/josuah/zephyr-sdk-1.0.0)
+-- Found toolchain: zephyr 1.0.0 (/home/josuah/zephyr-sdk-1.0.0)
+-- Found Dtc: /home/josuah/zephyr-sdk-1.0.0/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/dtc (found suitable version "1.7.0", minimum required is "1.4.6")
+-- Found BOARD.dts: /home/josuah/z/rig0/zephyr/boards/aithinker/ai_m61_32s_kit/ai_m61_32s_kit.dts
+devicetree error: /home/josuah/z/rig0/zephyr/boards/aithinker/ai_m61_32s_kit/ai_m61_32s.dtsi:35 (column 1): parse error: undefined node label 'flashctrl'
+CMake Error at /home/josuah/z/rig0/zephyr/cmake/modules/dts.cmake:324 (execute_process):
+  execute_process failed command indexes:
+
+    1: "Child return code: 1"
+
+Call Stack (most recent call first):
+  /home/josuah/z/rig0/zephyr/cmake/modules/dts.cmake:438 (dts_edt_pickle)
+  /home/josuah/z/rig0/zephyr/cmake/modules/zephyr_default.cmake:133 (dts_init)
+  /home/josuah/z/rig0/zephyr/cmake/modules/zephyr_default.cmake:133 (cmake_language)
+  /home/josuah/z/rig0/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)
+  /home/josuah/z/rig0/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)
+  CMakeLists.txt:5 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
+</pre></dd>
   <dt><code>ai_wb2_12f_kit/bl602c00q2i</code></dt>   <dd> <code>name: sample.basic.helloworld</code> <code>status: error</code> <code>execution_time: 0.00</code> <code>retries: 0</code> <code>rig: rig0</code><pre>Loading Zephyr default modules (Zephyr base).
+-- Application: /home/josuah/z/rig0/zephyr/samples/hello_world
+-- CMake version: 4.3.2
+-- Found Python3: /home/josuah/z/.venv/bin/python (found suitable version "3.14.5", minimum required is "3.12") found components: Interpreter
+-- Cache files will be written to: /home/josuah/.cache/zephyr
+-- Zephyr version: 4.4.99 (/home/josuah/z/rig0/zephyr)
+-- Found west (found suitable version "1.5.0", minimum required is "0.14.0")
+-- Board: ai_wb2_12f_kit, qualifiers: bl602c00q2i
+-- Found host-tools: zephyr 1.0.0 (/home/josuah/zephyr-sdk-1.0.0)
+-- Found toolchain: zephyr 1.0.0 (/home/josuah/zephyr-sdk-1.0.0)
+-- Found Dtc: /home/josuah/zephyr-sdk-1.0.0/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/dtc (found suitable version "1.7.0", minimum required is "1.4.6")
+-- Found BOARD.dts: /home/josuah/z/rig0/zephyr/boards/aithinker/ai_wb2_12f_kit/ai_wb2_12f_kit.dts
+devicetree error: /home/josuah/z/rig0/zephyr/boards/aithinker/ai_wb2_12f_kit/ai_wb2_12f.dtsi:36 (column 1): parse error: undefined node label 'flashctrl'
+CMake Error at /home/josuah/z/rig0/zephyr/cmake/modules/dts.cmake:324 (execute_process):
+  execute_process failed command indexes:
+
+    1: "Child return code: 1"
+
+Call Stack (most recent call first):
+  /home/josuah/z/rig0/zephyr/cmake/modules/dts.cmake:438 (dts_edt_pickle)
+  /home/josuah/z/rig0/zephyr/cmake/modules/zephyr_default.cmake:133 (dts_init)
+  /home/josuah/z/rig0/zephyr/cmake/modules/zephyr_default.cmake:133 (cmake_language)
+  /home/josuah/z/rig0/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)
+  /home/josuah/z/rig0/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)
+  CMakeLists.txt:5 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
+</pre></dd>
+   <dd> <code>name: sample.basic.helloworld</code> <code>status: error</code> <code>execution_time: 0.00</code> <code>retries: 0</code> <code>rig: rig0</code><pre>Loading Zephyr default modules (Zephyr base).
 -- Application: /home/josuah/z/rig0/zephyr/samples/hello_world
 -- CMake version: 4.3.2
 -- Found Python3: /home/josuah/z/.venv/bin/python (found suitable version "3.14.5", minimum required is "3.12") found components: Interpreter
@@ -1700,6 +1758,11 @@ PROJECT EXECUTION FAILED
  <tr id="4424aa681e0b_sample.kernel.philosopher" class="details"><td colspan=99><dl>
   <dt><code>ai_m61_32s_kit@DEFAULT/bl618m05q2i</code></dt>   <dd> <code>name: sample.kernel.philosopher</code> <code>status: passed</code> <code>execution_time: 6.60</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00</code> <code>rig: rig0</code></dd>
   <dt><code>ai_wb2_12f_kit/bl602c00q2i</code></dt>   <dd> <code>name: sample.kernel.philosopher</code> <code>status: passed</code> <code>execution_time: 6.24</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00</code> <code>rig: rig0</code></dd>
+ </dl></td></tr>
+ <tr><td><a href="https://github.com/zephyrproject-rtos/zephyr/commit/7f95f5eb7f97">7f95f5eb7f97 <span class="tooltip">2026-05-18T10:21:09+01:00</span></a></td><td>-</td><td>-</td><td><a href="#7f95f5eb7f97_sample.basic.helloworld">2/2</a></td><td>-</td></tr>
+ <tr id="7f95f5eb7f97_sample.basic.helloworld" class="details"><td colspan=99><dl>
+  <dt><code>ai_m61_32s_kit@DEFAULT/bl618m05q2i</code></dt>   <dd> <code>name: sample.basic.helloworld</code> <code>status: passed</code> <code>execution_time: 6.45</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00</code> <code>rig: rig0</code></dd>
+  <dt><code>ai_wb2_12f_kit/bl602c00q2i</code></dt>   <dd> <code>name: sample.basic.helloworld</code> <code>status: passed</code> <code>execution_time: 6.06</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00</code> <code>rig: rig0</code></dd>
  </dl></td></tr>
 </tbody></table>
   </body>
