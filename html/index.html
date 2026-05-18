@@ -1759,7 +1759,325 @@ PROJECT EXECUTION FAILED
   <dt><code>ai_m61_32s_kit@DEFAULT/bl618m05q2i</code></dt>   <dd> <code>name: sample.kernel.philosopher</code> <code>status: passed</code> <code>execution_time: 6.60</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00</code> <code>rig: rig0</code></dd>
   <dt><code>ai_wb2_12f_kit/bl602c00q2i</code></dt>   <dd> <code>name: sample.kernel.philosopher</code> <code>status: passed</code> <code>execution_time: 6.24</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00</code> <code>rig: rig0</code></dd>
  </dl></td></tr>
- <tr><td><a href="https://github.com/zephyrproject-rtos/zephyr/commit/7f95f5eb7f97">7f95f5eb7f97 <span class="tooltip">2026-05-18T10:21:09+01:00</span></a></td><td>-</td><td>-</td><td><a href="#7f95f5eb7f97_sample.basic.helloworld">2/2</a></td><td>-</td></tr>
+ <tr><td><a href="https://github.com/zephyrproject-rtos/zephyr/commit/7f95f5eb7f97">7f95f5eb7f97 <span class="tooltip">2026-05-18T10:21:09+01:00</span></a></td><td><a href="#7f95f5eb7f97_drivers.flash.common.default">0/2</a></td><td><a href="#7f95f5eb7f97_drivers.flash.common.test_storage_partition">0/2</a></td><td><a href="#7f95f5eb7f97_sample.basic.helloworld">2/2</a></td><td>-</td></tr>
+ <tr id="7f95f5eb7f97_drivers.flash.common.default" class="details"><td colspan=99><dl>
+  <dt><code>ai_m61_32s_kit@DEFAULT/bl618m05q2i</code></dt>   <dd> <code>name: drivers.flash.common.default</code> <code>status: failed</code> <code>execution_time: 7.50</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00</code> <code>rig: rig0</code><pre>I: Built-in PSRAM Present, size: 0x400000 bytes
+I: No Built-in Flash
+I: PSRAM ID: 5f
+*** Booting Zephyr OS build v4.4.0-2806-g7f95f5eb7f97 ***
+Running TESTSUITE flash_driver
+===================================================================
+START - test_flash_copy
+Test will run on device flash-controller@2000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:483: test_flash_copy_inner: flash_fill(flash_dev, 0xaa, page_info.start_offset, page_info.size) is non-zero
+
+ FAIL - test_flash_copy in 0.039 seconds
+===================================================================
+START - test_flash_erase
+Test will run on device flash-controller@2000b000
+ PASS - test_flash_erase in 0.025 seconds
+===================================================================
+START - test_flash_fill
+Test will run on device flash-controller@2000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:244: flash_driver_test_flash_fill: (rc not equal to 0)
+Fill failed
+
+ FAIL - test_flash_fill in 0.035 seconds
+===================================================================
+START - test_flash_flatten
+Test will run on device flash-controller@2000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:276: flash_driver_test_flash_flatten: (rc not equal to 0)
+Fill failed
+
+ FAIL - test_flash_flatten in 0.035 seconds
+===================================================================
+START - test_flash_page_layout
+Test will run on device flash-controller@2000b000
+start_offset=0x100000	size=4096	index=256
+page_count=2046
+ PASS - test_flash_page_layout in 0.010 seconds
+===================================================================
+START - test_flash_write_read_over_the_packet_limit
+Test will run on device flash-controller@2000b000
+Given bus controller does not have 'packet_data_limit' property
+ SKIP - test_flash_write_read_over_the_packet_limit in 0.011 seconds
+===================================================================
+START - test_get_size
+Test will run on device flash-controller@2000b000
+ SKIP - test_get_size in 0.005 seconds
+===================================================================
+START - test_read_unaligned_address
+Test will run on device flash-controller@2000b000
+ PASS - test_read_unaligned_address in 0.022 seconds
+===================================================================
+START - test_supply_gpios_control
+Test will run on device flash-controller@2000b000
+ SKIP - test_supply_gpios_control in 0.026 seconds
+===================================================================
+TESTSUITE flash_driver failed.
+
+------ TESTSUITE SUMMARY START ------
+
+SUITE FAIL -  50.00% [flash_driver]: pass = 3, fail = 3, skip = 3, total = 9 duration = 0.208 seconds
+ - FAIL - [flash_driver.test_flash_copy] duration = 0.039 seconds
+ - PASS - [flash_driver.test_flash_erase] duration = 0.025 seconds
+ - FAIL - [flash_driver.test_flash_fill] duration = 0.035 seconds
+ - FAIL - [flash_driver.test_flash_flatten] duration = 0.035 seconds
+ - PASS - [flash_driver.test_flash_page_layout] duration = 0.010 seconds
+ - SKIP - [flash_driver.test_flash_write_read_over_the_packet_limit] duration = 0.011 seconds
+ - SKIP - [flash_driver.test_get_size] duration = 0.005 seconds
+ - PASS - [flash_driver.test_read_unaligned_address] duration = 0.022 seconds
+ - SKIP - [flash_driver.test_supply_gpios_control] duration = 0.026 seconds
+
+------ TESTSUITE SUMMARY END ------
+
+===================================================================
+RunID: 879c84aad93a21a12054b10d035a32f8
+PROJECT EXECUTION FAILED
+</pre></dd>
+  <dt><code>ai_wb2_12f_kit/bl602c00q2i</code></dt>   <dd> <code>name: drivers.flash.common.default</code> <code>status: failed</code> <code>execution_time: 8.08</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00</code> <code>rig: rig0</code><pre>*** Booting Zephyr OS build v4.4.0-2806-g7f95f5eb7f97 ***
+Running TESTSUITE flash_driver
+===================================================================
+START - test_flash_copy
+Test will run on device flash-controller@4000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:483: test_flash_copy_inner: flash_fill(flash_dev, 0xaa, page_info.start_offset, page_info.size) is non-zero
+
+ FAIL - test_flash_copy in 0.052 seconds
+===================================================================
+START - test_flash_erase
+Test will run on device flash-controller@4000b000
+ PASS - test_flash_erase in 0.036 seconds
+===================================================================
+START - test_flash_fill
+Test will run on device flash-controller@4000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:244: flash_driver_test_flash_fill: (rc not equal to 0)
+Fill failed
+
+ FAIL - test_flash_fill in 0.049 seconds
+===================================================================
+START - test_flash_flatten
+Test will run on device flash-controller@4000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:276: flash_driver_test_flash_flatten: (rc not equal to 0)
+Fill failed
+
+ FAIL - test_flash_flatten in 0.050 seconds
+===================================================================
+START - test_flash_page_layout
+Test will run on device flash-controller@4000b000
+start_offset=0x100000	size=4096	index=256
+page_count=1022
+ PASS - test_flash_page_layout in 0.011 seconds
+===================================================================
+START - test_flash_write_read_over_the_packet_limit
+Test will run on device flash-controller@4000b000
+Given bus controller does not have 'packet_data_limit' property
+ SKIP - test_flash_write_read_over_the_packet_limit in 0.011 seconds
+===================================================================
+START - test_get_size
+Test will run on device flash-controller@4000b000
+ SKIP - test_get_size in 0.005 seconds
+===================================================================
+START - test_read_unaligned_address
+Test will run on device flash-controller@4000b000
+ PASS - test_read_unaligned_address in 0.037 seconds
+===================================================================
+START - test_supply_gpios_control
+Test will run on device flash-controller@4000b000
+ SKIP - test_supply_gpios_control in 0.035 seconds
+===================================================================
+TESTSUITE flash_driver failed.
+
+------ TESTSUITE SUMMARY START ------
+
+SUITE FAIL -  50.00% [flash_driver]: pass = 3, fail = 3, skip = 3, total = 9 duration = 0.286 seconds
+ - FAIL - [flash_driver.test_flash_copy] duration = 0.052 seconds
+ - PASS - [flash_driver.test_flash_erase] duration = 0.036 seconds
+ - FAIL - [flash_driver.test_flash_fill] duration = 0.049 seconds
+ - FAIL - [flash_driver.test_flash_flatten] duration = 0.050 seconds
+ - PASS - [flash_driver.test_flash_page_layout] duration = 0.011 seconds
+ - SKIP - [flash_driver.test_flash_write_read_over_the_packet_limit] duration = 0.011 seconds
+ - SKIP - [flash_driver.test_get_size] duration = 0.005 seconds
+ - PASS - [flash_driver.test_read_unaligned_address] duration = 0.037 seconds
+ - SKIP - [flash_driver.test_supply_gpios_control] duration = 0.035 seconds
+
+------ TESTSUITE SUMMARY END ------
+
+===================================================================
+RunID: 30aca806ca17f97681a58e0396dbfe49
+PROJECT EXECUTION FAILED
+</pre></dd>
+ </dl></td></tr>
+ <tr id="7f95f5eb7f97_drivers.flash.common.test_storage_partition" class="details"><td colspan=99><dl>
+  <dt><code>ai_m61_32s_kit@DEFAULT/bl618m05q2i</code></dt>   <dd> <code>name: drivers.flash.common.test_storage_partition</code> <code>status: failed</code> <code>execution_time: 7.77</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00</code> <code>rig: rig0</code><pre>I: Built-in PSRAM Present, size: 0x400000 bytes
+I: No Built-in Flash
+I: PSRAM ID: 5f
+*** Booting Zephyr OS build v4.4.0-2806-g7f95f5eb7f97 ***
+Running TESTSUITE flash_driver
+===================================================================
+START - test_flash_copy
+Test will run on device flash-controller@2000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:483: test_flash_copy_inner: flash_fill(flash_dev, 0xaa, page_info.start_offset, page_info.size) is non-zero
+
+ FAIL - test_flash_copy in 0.039 seconds
+===================================================================
+START - test_flash_erase
+Test will run on device flash-controller@2000b000
+ PASS - test_flash_erase in 0.027 seconds
+===================================================================
+START - test_flash_fill
+Test will run on device flash-controller@2000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:244: flash_driver_test_flash_fill: (rc not equal to 0)
+Fill failed
+
+ FAIL - test_flash_fill in 0.035 seconds
+===================================================================
+START - test_flash_flatten
+Test will run on device flash-controller@2000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:276: flash_driver_test_flash_flatten: (rc not equal to 0)
+Fill failed
+
+ FAIL - test_flash_flatten in 0.035 seconds
+===================================================================
+START - test_flash_page_layout
+Test will run on device flash-controller@2000b000
+start_offset=0x100000	size=4096	index=256
+page_count=2046
+ PASS - test_flash_page_layout in 0.010 seconds
+===================================================================
+START - test_flash_write_read_over_the_packet_limit
+Test will run on device flash-controller@2000b000
+Given bus controller does not have 'packet_data_limit' property
+ SKIP - test_flash_write_read_over_the_packet_limit in 0.011 seconds
+===================================================================
+START - test_get_size
+Test will run on device flash-controller@2000b000
+ SKIP - test_get_size in 0.005 seconds
+===================================================================
+START - test_read_unaligned_address
+Test will run on device flash-controller@2000b000
+ PASS - test_read_unaligned_address in 0.022 seconds
+===================================================================
+START - test_supply_gpios_control
+Test will run on device flash-controller@2000b000
+ SKIP - test_supply_gpios_control in 0.025 seconds
+===================================================================
+TESTSUITE flash_driver failed.
+
+------ TESTSUITE SUMMARY START ------
+
+SUITE FAIL -  50.00% [flash_driver]: pass = 3, fail = 3, skip = 3, total = 9 duration = 0.209 seconds
+ - FAIL - [flash_driver.test_flash_copy] duration = 0.039 seconds
+ - PASS - [flash_driver.test_flash_erase] duration = 0.027 seconds
+ - FAIL - [flash_driver.test_flash_fill] duration = 0.035 seconds
+ - FAIL - [flash_driver.test_flash_flatten] duration = 0.035 seconds
+ - PASS - [flash_driver.test_flash_page_layout] duration = 0.010 seconds
+ - SKIP - [flash_driver.test_flash_write_read_over_the_packet_limit] duration = 0.011 seconds
+ - SKIP - [flash_driver.test_get_size] duration = 0.005 seconds
+ - PASS - [flash_driver.test_read_unaligned_address] duration = 0.022 seconds
+ - SKIP - [flash_driver.test_supply_gpios_control] duration = 0.025 seconds
+
+------ TESTSUITE SUMMARY END ------
+
+===================================================================
+RunID: 9e3d0659461656b1bebf5b589f038c6b
+PROJECT EXECUTION FAILED
+</pre></dd>
+  <dt><code>ai_wb2_12f_kit/bl602c00q2i</code></dt>   <dd> <code>name: drivers.flash.common.test_storage_partition</code> <code>status: failed</code> <code>execution_time: 9.14</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00</code> <code>rig: rig0</code><pre>*** Booting Zephyr OS build v4.4.0-2806-g7f95f5eb7f97 ***
+Running TESTSUITE flash_driver
+===================================================================
+START - test_flash_copy
+Test will run on device flash-controller@4000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:483: test_flash_copy_inner: flash_fill(flash_dev, 0xaa, page_info.start_offset, page_info.size) is non-zero
+
+ FAIL - test_flash_copy in 0.052 seconds
+===================================================================
+START - test_flash_erase
+Test will run on device flash-controller@4000b000
+ PASS - test_flash_erase in 0.036 seconds
+===================================================================
+START - test_flash_fill
+Test will run on device flash-controller@4000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:244: flash_driver_test_flash_fill: (rc not equal to 0)
+Fill failed
+
+ FAIL - test_flash_fill in 0.049 seconds
+===================================================================
+START - test_flash_flatten
+Test will run on device flash-controller@4000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:276: flash_driver_test_flash_flatten: (rc not equal to 0)
+Fill failed
+
+ FAIL - test_flash_flatten in 0.050 seconds
+===================================================================
+START - test_flash_page_layout
+Test will run on device flash-controller@4000b000
+start_offset=0x100000	size=4096	index=256
+page_count=1022
+ PASS - test_flash_page_layout in 0.011 seconds
+===================================================================
+START - test_flash_write_read_over_the_packet_limit
+Test will run on device flash-controller@4000b000
+Given bus controller does not have 'packet_data_limit' property
+ SKIP - test_flash_write_read_over_the_packet_limit in 0.011 seconds
+===================================================================
+START - test_get_size
+Test will run on device flash-controller@4000b000
+ SKIP - test_get_size in 0.005 seconds
+===================================================================
+START - test_read_unaligned_address
+Test will run on device flash-controller@4000b000
+ PASS - test_read_unaligned_address in 0.037 seconds
+===================================================================
+START - test_supply_gpios_control
+Test will run on device flash-controller@4000b000
+ SKIP - test_supply_gpios_control in 0.035 seconds
+===================================================================
+TESTSUITE flash_driver failed.
+
+------ TESTSUITE SUMMARY START ------
+
+SUITE FAIL -  50.00% [flash_driver]: pass = 3, fail = 3, skip = 3, total = 9 duration = 0.286 seconds
+ - FAIL - [flash_driver.test_flash_copy] duration = 0.052 seconds
+ - PASS - [flash_driver.test_flash_erase] duration = 0.036 seconds
+ - FAIL - [flash_driver.test_flash_fill] duration = 0.049 seconds
+ - FAIL - [flash_driver.test_flash_flatten] duration = 0.050 seconds
+ - PASS - [flash_driver.test_flash_page_layout] duration = 0.011 seconds
+ - SKIP - [flash_driver.test_flash_write_read_over_the_packet_limit] duration = 0.011 seconds
+ - SKIP - [flash_driver.test_get_size] duration = 0.005 seconds
+ - PASS - [flash_driver.test_read_unaligned_address] duration = 0.037 seconds
+ - SKIP - [flash_driver.test_supply_gpios_control] duration = 0.035 seconds
+
+------ TESTSUITE SUMMARY END ------
+
+===================================================================
+RunID: 30fae6b2485bff91aa51fd6f5f8f5441
+PROJECT EXECUTION FAILED
+</pre></dd>
+ </dl></td></tr>
  <tr id="7f95f5eb7f97_sample.basic.helloworld" class="details"><td colspan=99><dl>
   <dt><code>ai_m61_32s_kit@DEFAULT/bl618m05q2i</code></dt>   <dd> <code>name: sample.basic.helloworld</code> <code>status: passed</code> <code>execution_time: 6.45</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00</code> <code>rig: rig0</code></dd>
   <dt><code>ai_wb2_12f_kit/bl602c00q2i</code></dt>   <dd> <code>name: sample.basic.helloworld</code> <code>status: passed</code> <code>execution_time: 6.06</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00</code> <code>rig: rig0</code></dd>
