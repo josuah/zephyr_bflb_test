@@ -1,6 +1,11 @@
 set -eux
+cd "$(dirname "$0")/.."
 
 west update
+
+if [ "$#" -eq 1 ]; then
+	git -C zephyr checkout "$1"
+fi
 
 west bflb-test run -- \
 -s arch.riscv.fpu_sharing \
