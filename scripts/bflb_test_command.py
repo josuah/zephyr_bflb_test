@@ -106,7 +106,7 @@ class BflbTestCommand(WestCommand):
         with open(self.hwmap_path(), 'a+') as f:
             pass
         with open(self.hwmap_path(), 'r') as f:
-            return yaml.safe_from(f)
+            return yaml.safe_load(f)
 
     def hwmap_list(self, hwmap):
         for row in hwmap:

@@ -17,5 +17,6 @@ west bflb-test run -- \
 -s pm.device_runtime \
 -s sample.basic.helloworld \
 -s sample.kernel.philosopher \
+-s kernel.cache.api \
 
 west bflb-test push
