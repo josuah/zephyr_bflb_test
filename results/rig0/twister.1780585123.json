@@ -1,0 +1,707 @@
+{
+    "environment":{
+        "os":"Linux",
+        "zephyr_version":"v4.4.0-4374-gb27420e8446a",
+        "toolchain":"zephyr/gnu",
+        "commit_date":"2026-06-04T14:05:55+02:00",
+        "run_date":"2026-06-04T14:52:19+00:00",
+        "options":{
+            "help":null,
+            "zephyr_base":null,
+            "quiet":0,
+            "command":"twister",
+            "device_testing":true,
+            "hardware_map":"/home/josuah/z/rig0/zephyr_bflb_test/rigs/rig0.hwmap.yml",
+            "platform":[
+                "ai_wb2_12f_kit",
+                "ai_m61_32s_kit"
+            ],
+            "test":[
+                "arch.riscv.fpu_sharing",
+                "arch.riscv.pm_s2ram.clic",
+                "drivers.console.uart",
+                "drivers.flash.common.default",
+                "drivers.flash.common.test_storage_partition",
+                "drivers.gpio.get_direction",
+                "pm.device_runtime",
+                "sample.basic.helloworld",
+                "sample.kernel.philosopher",
+                "kernel.cache.api"
+            ]
+        }
+    },
+    "testsuites":[
+        {
+            "name":"kernel.cache.api",
+            "arch":"riscv",
+            "platform":"ai_m61_32s_kit@DEFAULT/bl618m05q2i",
+            "path":"tests/kernel/cache",
+            "run_id":"bff495d57fd8a14f310ed0ac59e0ab09",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00",
+            "status":"failed",
+            "log":"",
+            "reason":"Serial Device Error",
+            "execution_time":"0.00",
+            "build_time":"104.74",
+            "testcases":[
+                {
+                    "identifier":"kernel.cache.api.cache_api.data_cache_api_user",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"kernel.cache.api.cache_api.data_cache_api",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"kernel.cache.api.cache_api.instr_cache_api",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                }
+            ]
+        },
+        {
+            "name":"kernel.cache.api",
+            "arch":"riscv",
+            "platform":"ai_wb2_12f_kit/bl602c00q2i",
+            "path":"tests/kernel/cache",
+            "run_id":"708bf7db063ae893ad56d90408e6f2e7",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00",
+            "status":"failed",
+            "log":"",
+            "reason":"Serial Device Error",
+            "execution_time":"0.00",
+            "build_time":"104.87",
+            "testcases":[
+                {
+                    "identifier":"kernel.cache.api.cache_api.data_cache_api_user",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"kernel.cache.api.cache_api.data_cache_api",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"kernel.cache.api.cache_api.instr_cache_api",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                }
+            ]
+        },
+        {
+            "name":"drivers.console.uart",
+            "arch":"riscv",
+            "platform":"ai_m61_32s_kit@DEFAULT/bl618m05q2i",
+            "path":"tests/drivers/console/hello_world",
+            "run_id":"cec6db2cb5a68bf4f0e1942359e641e5",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00",
+            "status":"failed",
+            "log":"",
+            "reason":"Serial Device Error",
+            "execution_time":"0.00",
+            "build_time":"105.74",
+            "testcases":[
+                {
+                    "identifier":"drivers.console.uart",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                }
+            ]
+        },
+        {
+            "name":"drivers.console.uart",
+            "arch":"riscv",
+            "platform":"ai_wb2_12f_kit/bl602c00q2i",
+            "path":"tests/drivers/console/hello_world",
+            "run_id":"cb5834082a560d41c5a35123b5f28ae3",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00",
+            "status":"failed",
+            "log":"",
+            "reason":"Serial Device Error",
+            "execution_time":"0.00",
+            "build_time":"102.72",
+            "testcases":[
+                {
+                    "identifier":"drivers.console.uart",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                }
+            ]
+        },
+        {
+            "name":"drivers.gpio.get_direction",
+            "arch":"riscv",
+            "platform":"ai_m61_32s_kit@DEFAULT/bl618m05q2i",
+            "path":"tests/drivers/gpio/gpio_get_direction",
+            "run_id":"71280c07188a8040aefb64bc1deb7404",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00",
+            "status":"failed",
+            "log":"",
+            "reason":"Serial Device Error",
+            "execution_time":"0.00",
+            "build_time":"89.75",
+            "testcases":[
+                {
+                    "identifier":"drivers.gpio.get_direction.gpio_get_direction.input_output",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.gpio.get_direction.gpio_get_direction.output",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.gpio.get_direction.gpio_get_direction.input",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.gpio.get_direction.gpio_get_direction.disconnect",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                }
+            ]
+        },
+        {
+            "name":"drivers.gpio.get_direction",
+            "arch":"riscv",
+            "platform":"ai_wb2_12f_kit/bl602c00q2i",
+            "path":"tests/drivers/gpio/gpio_get_direction",
+            "run_id":"ecc9e57365aa84ee7e344478626cbeff",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00",
+            "status":"failed",
+            "log":"",
+            "reason":"Serial Device Error",
+            "execution_time":"0.00",
+            "build_time":"87.23",
+            "testcases":[
+                {
+                    "identifier":"drivers.gpio.get_direction.gpio_get_direction.input_output",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.gpio.get_direction.gpio_get_direction.output",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.gpio.get_direction.gpio_get_direction.input",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.gpio.get_direction.gpio_get_direction.disconnect",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                }
+            ]
+        },
+        {
+            "name":"drivers.flash.common.default",
+            "arch":"riscv",
+            "platform":"ai_m61_32s_kit@DEFAULT/bl618m05q2i",
+            "path":"tests/drivers/flash/common",
+            "run_id":"19a680fcc70637f8bd89ffb1a7c2f744",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00",
+            "status":"failed",
+            "log":"",
+            "reason":"Serial Device Error",
+            "execution_time":"0.00",
+            "build_time":"96.24",
+            "testcases":[
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_copy",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_page_layout",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.get_size",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.supply_gpios_control",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_write_read_over_the_packet_limit",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_erase",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_flatten",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_fill",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.read_unaligned_address",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                }
+            ]
+        },
+        {
+            "name":"drivers.flash.common.default",
+            "arch":"riscv",
+            "platform":"ai_wb2_12f_kit/bl602c00q2i",
+            "path":"tests/drivers/flash/common",
+            "run_id":"5af9995a19b874ca79fcf3866ee2cb6b",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00",
+            "status":"failed",
+            "log":"",
+            "reason":"Serial Device Error",
+            "execution_time":"0.00",
+            "build_time":"94.56",
+            "testcases":[
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_copy",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_page_layout",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.get_size",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.supply_gpios_control",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_write_read_over_the_packet_limit",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_erase",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_flatten",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_fill",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.read_unaligned_address",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                }
+            ]
+        },
+        {
+            "name":"drivers.flash.common.test_storage_partition",
+            "arch":"riscv",
+            "platform":"ai_m61_32s_kit@DEFAULT/bl618m05q2i",
+            "path":"tests/drivers/flash/common",
+            "run_id":"e50b3c26edef81709a66a3d36cfe9167",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00",
+            "status":"failed",
+            "log":"",
+            "reason":"Serial Device Error",
+            "execution_time":"0.00",
+            "build_time":"97.36",
+            "testcases":[
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_copy",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_page_layout",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.get_size",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.supply_gpios_control",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_write_read_over_the_packet_limit",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_erase",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_flatten",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_fill",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.read_unaligned_address",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                }
+            ]
+        },
+        {
+            "name":"drivers.flash.common.test_storage_partition",
+            "arch":"riscv",
+            "platform":"ai_wb2_12f_kit/bl602c00q2i",
+            "path":"tests/drivers/flash/common",
+            "run_id":"c234d99e13f6de3f5d83a267427da398",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00",
+            "status":"failed",
+            "log":"",
+            "reason":"Serial Device Error",
+            "execution_time":"0.00",
+            "build_time":"96.18",
+            "testcases":[
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_copy",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_page_layout",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.get_size",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.supply_gpios_control",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_write_read_over_the_packet_limit",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_erase",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_flatten",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_fill",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.read_unaligned_address",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                }
+            ]
+        },
+        {
+            "name":"arch.riscv.fpu_sharing",
+            "arch":"riscv",
+            "platform":"ai_m61_32s_kit@DEFAULT/bl618m05q2i",
+            "path":"tests/arch/riscv/fpu_sharing",
+            "run_id":"f5ea8a381cc8b45579334ffe53d40339",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00",
+            "status":"failed",
+            "log":"",
+            "reason":"Serial Device Error",
+            "execution_time":"0.00",
+            "build_time":"96.36",
+            "testcases":[
+                {
+                    "identifier":"arch.riscv.fpu_sharing.riscv_fpu_sharing.fp_insn_trap",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"arch.riscv.fpu_sharing.riscv_fpu_sharing.thread_vs_exc_interaction",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"arch.riscv.fpu_sharing.riscv_fpu_sharing.multi_thread_interaction",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"arch.riscv.fpu_sharing.riscv_fpu_sharing.basics",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                }
+            ]
+        },
+        {
+            "name":"arch.riscv.fpu_sharing",
+            "arch":"riscv",
+            "platform":"ai_wb2_12f_kit/bl602c00q2i",
+            "path":"tests/arch/riscv/fpu_sharing",
+            "run_id":"6d1abb626927b9c78379957b8adad6a3",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00",
+            "status":"failed",
+            "log":"",
+            "reason":"Serial Device Error",
+            "execution_time":"0.00",
+            "build_time":"93.08",
+            "testcases":[
+                {
+                    "identifier":"arch.riscv.fpu_sharing.riscv_fpu_sharing.fp_insn_trap",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"arch.riscv.fpu_sharing.riscv_fpu_sharing.thread_vs_exc_interaction",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"arch.riscv.fpu_sharing.riscv_fpu_sharing.multi_thread_interaction",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                },
+                {
+                    "identifier":"arch.riscv.fpu_sharing.riscv_fpu_sharing.basics",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                }
+            ]
+        },
+        {
+            "name":"sample.basic.helloworld",
+            "arch":"riscv",
+            "platform":"ai_m61_32s_kit@DEFAULT/bl618m05q2i",
+            "path":"samples/hello_world",
+            "run_id":"eb479903f9659705a8ddceb927c05f13",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00",
+            "status":"failed",
+            "log":"",
+            "reason":"Serial Device Error",
+            "execution_time":"0.00",
+            "build_time":"67.53",
+            "testcases":[
+                {
+                    "identifier":"sample.basic.helloworld",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                }
+            ]
+        },
+        {
+            "name":"sample.basic.helloworld",
+            "arch":"riscv",
+            "platform":"ai_wb2_12f_kit/bl602c00q2i",
+            "path":"samples/hello_world",
+            "run_id":"7e2037e88cd7594cccca6a9f540399a6",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00",
+            "status":"failed",
+            "log":"",
+            "reason":"Serial Device Error",
+            "execution_time":"0.00",
+            "build_time":"66.62",
+            "testcases":[
+                {
+                    "identifier":"sample.basic.helloworld",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                }
+            ]
+        },
+        {
+            "name":"sample.kernel.philosopher",
+            "arch":"riscv",
+            "platform":"ai_m61_32s_kit@DEFAULT/bl618m05q2i",
+            "path":"samples/philosophers",
+            "run_id":"7c2f313c5ce7cf3843f3774aabf854fc",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00",
+            "status":"failed",
+            "log":"",
+            "reason":"Serial Device Error",
+            "execution_time":"0.00",
+            "build_time":"68.44",
+            "testcases":[
+                {
+                    "identifier":"sample.kernel.philosopher",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                }
+            ]
+        },
+        {
+            "name":"sample.kernel.philosopher",
+            "arch":"riscv",
+            "platform":"ai_wb2_12f_kit/bl602c00q2i",
+            "path":"samples/philosophers",
+            "run_id":"c71c138649d48e376e26e46e451f1744",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00",
+            "status":"failed",
+            "log":"",
+            "reason":"Serial Device Error",
+            "execution_time":"0.00",
+            "build_time":"67.10",
+            "testcases":[
+                {
+                    "identifier":"sample.kernel.philosopher",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Serial Device Error"
+                }
+            ]
+        }
+    ]
+}
