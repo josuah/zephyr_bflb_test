@@ -14,9 +14,11 @@ west bflb-test run -- \
 -s drivers.flash.common.default \
 -s drivers.flash.common.test_storage_partition \
 -s drivers.gpio.get_direction \
+-s kernel.cache.api \
+-s kernel.common.lto \
+-s kernel.common.lto.singlethreaded \
 -s pm.device_runtime \
 -s sample.basic.helloworld \
 -s sample.kernel.philosopher \
--s kernel.cache.api \
 
 west bflb-test push
