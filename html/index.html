@@ -12493,6 +12493,902 @@ START - test_nested_irq_offload
   <dt><code>ai_m61_32s_kit@DEFAULT/bl618m05q2i</code></dt>   <dd> <code>name: sample.kernel.philosopher</code> <code>status: failed</code> <code>execution_time: 0.00</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00</code> <code>rig: rig0</code><pre></pre></dd>
   <dt><code>ai_wb2_12f_kit/bl602c00q2i</code></dt>   <dd> <code>name: sample.kernel.philosopher</code> <code>status: failed</code> <code>execution_time: 0.00</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00</code> <code>rig: rig0</code><pre></pre></dd>
  </dl></td><td/></tr>
+ <tr><td><a href="https://github.com/zephyrproject-rtos/zephyr/commit/7d1bca7cf5b5">7d1bca7cf5b5 <span class="tooltip">2026-06-21T14:04:38-07:00</span></a></td><td><a href="#7d1bca7cf5b5_arch.riscv.fpu_sharing">0/2</a></td><td><a href="#7d1bca7cf5b5_drivers.console.uart">2/2</a></td><td><a href="#7d1bca7cf5b5_drivers.flash.common.default">0/2</a></td><td><a href="#7d1bca7cf5b5_drivers.flash.common.test_storage_partition">0/2</a></td><td><a href="#7d1bca7cf5b5_drivers.gpio.get_direction">2/2</a></td><td><a href="#7d1bca7cf5b5_kernel.cache.api">2/2</a></td><td><a href="#7d1bca7cf5b5_kernel.common.lto">0/2</a></td><td><a href="#7d1bca7cf5b5_kernel.common.lto.singlethreaded">0/2</a></td><td><a href="#7d1bca7cf5b5_sample.basic.helloworld">2/2</a></td><td><a href="#7d1bca7cf5b5_sample.kernel.philosopher">2/2</a></td></tr>
+ <tr id="7d1bca7cf5b5_arch.riscv.fpu_sharing" class="details"><td colspan="100%"><dl>
+  <dt><code>ai_m61_32s_kit@DEFAULT/bl618m05q2i</code></dt>   <dd> <code>name: arch.riscv.fpu_sharing</code> <code>status: failed</code> <code>execution_time: 64.68</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00</code> <code>rig: rig0</code><pre>I: Built-in PSRAM Present, size: 0x400000 bytes
+I: No Built-in Flash
+I: PSRAM ID: 5f
+*** Booting Zephyr OS build v4.4.0-5796-g7d1bca7cf5b5 ***
+Running TESTSUITE riscv_fpu_sharing
+===================================================================
+START - test_basics
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/arch/riscv/fpu_sharing/src/main.c:59: riscv_fpu_sharing_test_basics: fpu_is_clean() is false
+
+ FAIL - test_basics in 0.013 seconds
+===================================================================
+START - test_fp_insn_trap
+ PASS - test_fp_insn_trap in 0.001 seconds
+===================================================================
+START - test_multi_thread_interaction
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/arch/riscv/fpu_sharing/src/main.c:91: new_thread_check: (fpu_is_clean() is false)
+FPU not clean after read
+ FAIL - test_multi_thread_interaction in 0.015 seconds
+===================================================================
+START - test_thread_vs_exc_interaction
+</pre></dd>
+  <dt><code>ai_wb2_12f_kit/bl602c00q2i</code></dt>   <dd> <code>name: arch.riscv.fpu_sharing</code> <code>status: failed</code> <code>execution_time: 5.57</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00</code> <code>rig: rig0</code><pre>*** Booting Zephyr OS build v4.4.0-5796-g7d1bca7cf5b5 ***
+Running TESTSUITE riscv_fpu_sharing
+===================================================================
+START - test_basics
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/arch/riscv/fpu_sharing/src/main.c:59: riscv_fpu_sharing_test_basics: fpu_is_clean() is false
+
+ FAIL - test_basics in 0.013 seconds
+===================================================================
+START - test_fp_insn_trap
+ PASS - test_fp_insn_trap in 0.001 seconds
+===================================================================
+START - test_multi_thread_interaction
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/arch/riscv/fpu_sharing/src/main.c:91: new_thread_check: (fpu_is_clean() is false)
+FPU not clean after read
+ FAIL - test_multi_thread_interaction in 0.015 seconds
+===================================================================
+START - test_thread_vs_exc_interaction
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/arch/riscv/fpu_sharing/src/main.c:316: riscv_fpu_sharing_test_thread_vs_exc_interaction: fpu_is_clean() is false
+
+ FAIL - test_thread_vs_exc_interaction in 0.015 seconds
+===================================================================
+TESTSUITE riscv_fpu_sharing failed.
+
+------ TESTSUITE SUMMARY START ------
+
+SUITE FAIL -  25.00% [riscv_fpu_sharing]: pass = 1, fail = 3, skip = 0, total = 4 duration = 0.044 seconds
+ - FAIL - [riscv_fpu_sharing.test_basics] duration = 0.013 seconds
+ - PASS - [riscv_fpu_sharing.test_fp_insn_trap] duration = 0.001 seconds
+ - FAIL - [riscv_fpu_sharing.test_multi_thread_interaction] duration = 0.015 seconds
+ - FAIL - [riscv_fpu_sharing.test_thread_vs_exc_interaction] duration = 0.015 seconds
+
+------ TESTSUITE SUMMARY END ------
+
+===================================================================
+RunID: 63ae5f3b1edf5dc0e069c86d61857e80
+PROJECT EXECUTION FAILED
+</pre></dd>
+ </dl></td><td/></tr>
+ <tr id="7d1bca7cf5b5_drivers.console.uart" class="details"><td colspan="100%"><dl>
+  <dt><code>ai_m61_32s_kit@DEFAULT/bl618m05q2i</code></dt>   <dd> <code>name: drivers.console.uart</code> <code>status: passed</code> <code>execution_time: 4.85</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00</code> <code>rig: rig0</code></dd>
+  <dt><code>ai_wb2_12f_kit/bl602c00q2i</code></dt>   <dd> <code>name: drivers.console.uart</code> <code>status: passed</code> <code>execution_time: 5.49</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00</code> <code>rig: rig0</code></dd>
+ </dl></td><td/></tr>
+ <tr id="7d1bca7cf5b5_drivers.flash.common.default" class="details"><td colspan="100%"><dl>
+  <dt><code>ai_m61_32s_kit@DEFAULT/bl618m05q2i</code></dt>   <dd> <code>name: drivers.flash.common.default</code> <code>status: failed</code> <code>execution_time: 4.66</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00</code> <code>rig: rig0</code><pre>I: Built-in PSRAM Present, size: 0x400000 bytes
+I: No Built-in Flash
+I: PSRAM ID: 5f
+*** Booting Zephyr OS build v4.4.0-5796-g7d1bca7cf5b5 ***
+Running TESTSUITE flash_driver
+===================================================================
+START - test_flash_copy
+Test will run on device flash-controller@2000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:483: test_flash_copy_inner: flash_fill(flash_dev, 0xaa, page_info.start_offset, page_info.size) is non-zero
+
+ FAIL - test_flash_copy in 0.039 seconds
+===================================================================
+START - test_flash_erase
+Test will run on device flash-controller@2000b000
+ PASS - test_flash_erase in 0.027 seconds
+===================================================================
+START - test_flash_fill
+Test will run on device flash-controller@2000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:244: flash_driver_test_flash_fill: (rc not equal to 0)
+Fill failed
+
+ FAIL - test_flash_fill in 0.035 seconds
+===================================================================
+START - test_flash_flatten
+Test will run on device flash-controller@2000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:276: flash_driver_test_flash_flatten: (rc not equal to 0)
+Fill failed
+
+ FAIL - test_flash_flatten in 0.036 seconds
+===================================================================
+START - test_flash_page_layout
+Test will run on device flash-controller@2000b000
+start_offset=0x100000	size=4096	index=256
+page_count=2046
+ PASS - test_flash_page_layout in 0.010 seconds
+===================================================================
+START - test_flash_write_read_over_the_packet_limit
+Test will run on device flash-controller@2000b000
+Given bus controller does not have 'packet_data_limit' property
+ SKIP - test_flash_write_read_over_the_packet_limit in 0.011 seconds
+===================================================================
+START - test_get_size
+Test will run on device flash-controller@2000b000
+ SKIP - test_get_size in 0.005 seconds
+===================================================================
+START - test_read_unaligned_address
+Test will run on device flash-controller@2000b000
+ PASS - test_read_unaligned_address in 0.022 seconds
+===================================================================
+START - test_supply_gpios_control
+Test will run on device flash-controller@2000b000
+ SKIP - test_supply_gpios_control in 0.027 seconds
+===================================================================
+TESTSUITE flash_driver failed.
+
+------ TESTSUITE SUMMARY START ------
+
+SUITE FAIL -  50.00% [flash_driver]: pass = 3, fail = 3, skip = 3, total = 9 duration = 0.212 seconds
+ - FAIL - [flash_driver.test_flash_copy] duration = 0.039 seconds
+ - PASS - [flash_driver.test_flash_erase] duration = 0.027 seconds
+ - FAIL - [flash_driver.test_flash_fill] duration = 0.035 seconds
+ - FAIL - [flash_driver.test_flash_flatten] duration = 0.036 seconds
+ - PASS - [flash_driver.test_flash_page_layout] duration = 0.010 seconds
+ - SKIP - [flash_driver.test_flash_write_read_over_the_packet_limit] duration = 0.011 seconds
+ - SKIP - [flash_driver.test_get_size] duration = 0.005 seconds
+ - PASS - [flash_driver.test_read_unaligned_address] duration = 0.022 seconds
+ - SKIP - [flash_driver.test_supply_gpios_control] duration = 0.027 seconds
+
+------ TESTSUITE SUMMARY END ------
+
+===================================================================
+RunID: 3925f864dcb7ad756d1787f286abfda6
+PROJECT EXECUTION FAILED
+</pre></dd>
+  <dt><code>ai_wb2_12f_kit/bl602c00q2i</code></dt>   <dd> <code>name: drivers.flash.common.default</code> <code>status: failed</code> <code>execution_time: 5.46</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00</code> <code>rig: rig0</code><pre>*** Booting Zephyr OS build v4.4.0-5796-g7d1bca7cf5b5 ***
+Running TESTSUITE flash_driver
+===================================================================
+START - test_flash_copy
+Test will run on device flash-controller@4000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:483: test_flash_copy_inner: flash_fill(flash_dev, 0xaa, page_info.start_offset, page_info.size) is non-zero
+
+ FAIL - test_flash_copy in 0.053 seconds
+===================================================================
+START - test_flash_erase
+Test will run on device flash-controller@4000b000
+ PASS - test_flash_erase in 0.036 seconds
+===================================================================
+START - test_flash_fill
+Test will run on device flash-controller@4000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:244: flash_driver_test_flash_fill: (rc not equal to 0)
+Fill failed
+
+ FAIL - test_flash_fill in 0.050 seconds
+===================================================================
+START - test_flash_flatten
+Test will run on device flash-controller@4000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:276: flash_driver_test_flash_flatten: (rc not equal to 0)
+Fill failed
+
+ FAIL - test_flash_flatten in 0.050 seconds
+===================================================================
+START - test_flash_page_layout
+Test will run on device flash-controller@4000b000
+start_offset=0x100000	size=4096	index=256
+page_count=1022
+ PASS - test_flash_page_layout in 0.011 seconds
+===================================================================
+START - test_flash_write_read_over_the_packet_limit
+Test will run on device flash-controller@4000b000
+Given bus controller does not have 'packet_data_limit' property
+ SKIP - test_flash_write_read_over_the_packet_limit in 0.011 seconds
+===================================================================
+START - test_get_size
+Test will run on device flash-controller@4000b000
+ SKIP - test_get_size in 0.005 seconds
+===================================================================
+START - test_read_unaligned_address
+Test will run on device flash-controller@4000b000
+ PASS - test_read_unaligned_address in 0.038 seconds
+===================================================================
+START - test_supply_gpios_control
+Test will run on device flash-controller@4000b000
+ SKIP - test_supply_gpios_control in 0.036 seconds
+===================================================================
+TESTSUITE flash_driver failed.
+
+------ TESTSUITE SUMMARY START ------
+
+SUITE FAIL -  50.00% [flash_driver]: pass = 3, fail = 3, skip = 3, total = 9 duration = 0.290 seconds
+ - FAIL - [flash_driver.test_flash_copy] duration = 0.053 seconds
+ - PASS - [flash_driver.test_flash_erase] duration = 0.036 seconds
+ - FAIL - [flash_driver.test_flash_fill] duration = 0.050 seconds
+ - FAIL - [flash_driver.test_flash_flatten] duration = 0.050 seconds
+ - PASS - [flash_driver.test_flash_page_layout] duration = 0.011 seconds
+ - SKIP - [flash_driver.test_flash_write_read_over_the_packet_limit] duration = 0.011 seconds
+ - SKIP - [flash_driver.test_get_size] duration = 0.005 seconds
+ - PASS - [flash_driver.test_read_unaligned_address] duration = 0.038 seconds
+ - SKIP - [flash_driver.test_supply_gpios_control] duration = 0.036 seconds
+
+------ TESTSUITE SUMMARY END ------
+
+===================================================================
+RunID: 39bf7cb837f81d2a60cb4614cbd5632a
+PROJECT EXECUTION FAILED
+</pre></dd>
+ </dl></td><td/></tr>
+ <tr id="7d1bca7cf5b5_drivers.flash.common.test_storage_partition" class="details"><td colspan="100%"><dl>
+  <dt><code>ai_m61_32s_kit@DEFAULT/bl618m05q2i</code></dt>   <dd> <code>name: drivers.flash.common.test_storage_partition</code> <code>status: failed</code> <code>execution_time: 4.68</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00</code> <code>rig: rig0</code><pre>I: Built-in PSRAM Present, size: 0x400000 bytes
+I: No Built-in Flash
+I: PSRAM ID: 5f
+*** Booting Zephyr OS build v4.4.0-5796-g7d1bca7cf5b5 ***
+Running TESTSUITE flash_driver
+===================================================================
+START - test_flash_copy
+Test will run on device flash-controller@2000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:483: test_flash_copy_inner: flash_fill(flash_dev, 0xaa, page_info.start_offset, page_info.size) is non-zero
+
+ FAIL - test_flash_copy in 0.039 seconds
+===================================================================
+START - test_flash_erase
+Test will run on device flash-controller@2000b000
+ PASS - test_flash_erase in 0.027 seconds
+===================================================================
+START - test_flash_fill
+Test will run on device flash-controller@2000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:244: flash_driver_test_flash_fill: (rc not equal to 0)
+Fill failed
+
+ FAIL - test_flash_fill in 0.035 seconds
+===================================================================
+START - test_flash_flatten
+Test will run on device flash-controller@2000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:276: flash_driver_test_flash_flatten: (rc not equal to 0)
+Fill failed
+
+ FAIL - test_flash_flatten in 0.036 seconds
+===================================================================
+START - test_flash_page_layout
+Test will run on device flash-controller@2000b000
+start_offset=0x100000	size=4096	index=256
+page_count=2046
+ PASS - test_flash_page_layout in 0.010 seconds
+===================================================================
+START - test_flash_write_read_over_the_packet_limit
+Test will run on device flash-controller@2000b000
+Given bus controller does not have 'packet_data_limit' property
+ SKIP - test_flash_write_read_over_the_packet_limit in 0.011 seconds
+===================================================================
+START - test_get_size
+Test will run on device flash-controller@2000b000
+ SKIP - test_get_size in 0.005 seconds
+===================================================================
+START - test_read_unaligned_address
+Test will run on device flash-controller@2000b000
+ PASS - test_read_unaligned_address in 0.022 seconds
+===================================================================
+START - test_supply_gpios_control
+Test will run on device flash-controller@2000b000
+ SKIP - test_supply_gpios_control in 0.027 seconds
+===================================================================
+TESTSUITE flash_driver failed.
+
+------ TESTSUITE SUMMARY START ------
+
+SUITE FAIL -  50.00% [flash_driver]: pass = 3, fail = 3, skip = 3, total = 9 duration = 0.212 seconds
+ - FAIL - [flash_driver.test_flash_copy] duration = 0.039 seconds
+ - PASS - [flash_driver.test_flash_erase] duration = 0.027 seconds
+ - FAIL - [flash_driver.test_flash_fill] duration = 0.035 seconds
+ - FAIL - [flash_driver.test_flash_flatten] duration = 0.036 seconds
+ - PASS - [flash_driver.test_flash_page_layout] duration = 0.010 seconds
+ - SKIP - [flash_driver.test_flash_write_read_over_the_packet_limit] duration = 0.011 seconds
+ - SKIP - [flash_driver.test_get_size] duration = 0.005 seconds
+ - PASS - [flash_driver.test_read_unaligned_address] duration = 0.022 seconds
+ - SKIP - [flash_driver.test_supply_gpios_control] duration = 0.027 seconds
+
+------ TESTSUITE SUMMARY END ------
+
+===================================================================
+RunID: cad21181a0b3c392ee49da35a22f133b
+PROJECT EXECUTION FAILED
+</pre></dd>
+  <dt><code>ai_wb2_12f_kit/bl602c00q2i</code></dt>   <dd> <code>name: drivers.flash.common.test_storage_partition</code> <code>status: failed</code> <code>execution_time: 5.46</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00</code> <code>rig: rig0</code><pre>*** Booting Zephyr OS build v4.4.0-5796-g7d1bca7cf5b5 ***
+Running TESTSUITE flash_driver
+===================================================================
+START - test_flash_copy
+Test will run on device flash-controller@4000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:483: test_flash_copy_inner: flash_fill(flash_dev, 0xaa, page_info.start_offset, page_info.size) is non-zero
+
+ FAIL - test_flash_copy in 0.052 seconds
+===================================================================
+START - test_flash_erase
+Test will run on device flash-controller@4000b000
+ PASS - test_flash_erase in 0.036 seconds
+===================================================================
+START - test_flash_fill
+Test will run on device flash-controller@4000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:244: flash_driver_test_flash_fill: (rc not equal to 0)
+Fill failed
+
+ FAIL - test_flash_fill in 0.050 seconds
+===================================================================
+START - test_flash_flatten
+Test will run on device flash-controller@4000b000
+E: Size of CONFIG_FLASH_FILL_BUFFER_SIZE
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/flash/common/src/main.c:276: flash_driver_test_flash_flatten: (rc not equal to 0)
+Fill failed
+
+ FAIL - test_flash_flatten in 0.050 seconds
+===================================================================
+START - test_flash_page_layout
+Test will run on device flash-controller@4000b000
+start_offset=0x100000	size=4096	index=256
+page_count=1022
+ PASS - test_flash_page_layout in 0.011 seconds
+===================================================================
+START - test_flash_write_read_over_the_packet_limit
+Test will run on device flash-controller@4000b000
+Given bus controller does not have 'packet_data_limit' property
+ SKIP - test_flash_write_read_over_the_packet_limit in 0.011 seconds
+===================================================================
+START - test_get_size
+Test will run on device flash-controller@4000b000
+ SKIP - test_get_size in 0.005 seconds
+===================================================================
+START - test_read_unaligned_address
+Test will run on device flash-controller@4000b000
+ PASS - test_read_unaligned_address in 0.038 seconds
+===================================================================
+START - test_supply_gpios_control
+Test will run on device flash-controller@4000b000
+ SKIP - test_supply_gpios_control in 0.036 seconds
+===================================================================
+TESTSUITE flash_driver failed.
+
+------ TESTSUITE SUMMARY START ------
+
+SUITE FAIL -  50.00% [flash_driver]: pass = 3, fail = 3, skip = 3, total = 9 duration = 0.289 seconds
+ - FAIL - [flash_driver.test_flash_copy] duration = 0.052 seconds
+ - PASS - [flash_driver.test_flash_erase] duration = 0.036 seconds
+ - FAIL - [flash_driver.test_flash_fill] duration = 0.050 seconds
+ - FAIL - [flash_driver.test_flash_flatten] duration = 0.050 seconds
+ - PASS - [flash_driver.test_flash_page_layout] duration = 0.011 seconds
+ - SKIP - [flash_driver.test_flash_write_read_over_the_packet_limit] duration = 0.011 seconds
+ - SKIP - [flash_driver.test_get_size] duration = 0.005 seconds
+ - PASS - [flash_driver.test_read_unaligned_address] duration = 0.038 seconds
+ - SKIP - [flash_driver.test_supply_gpios_control] duration = 0.036 seconds
+
+------ TESTSUITE SUMMARY END ------
+
+===================================================================
+RunID: cdc906e920ef2d010522d264a614a8a2
+PROJECT EXECUTION FAILED
+</pre></dd>
+ </dl></td><td/></tr>
+ <tr id="7d1bca7cf5b5_drivers.gpio.get_direction" class="details"><td colspan="100%"><dl>
+  <dt><code>ai_m61_32s_kit@DEFAULT/bl618m05q2i</code></dt>   <dd> <code>name: drivers.gpio.get_direction</code> <code>status: passed</code> <code>execution_time: 4.90</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00</code> <code>rig: rig0</code></dd>
+  <dt><code>ai_wb2_12f_kit/bl602c00q2i</code></dt>   <dd> <code>name: drivers.gpio.get_direction</code> <code>status: passed</code> <code>execution_time: 5.78</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00</code> <code>rig: rig0</code></dd>
+ </dl></td><td/></tr>
+ <tr id="7d1bca7cf5b5_kernel.cache.api" class="details"><td colspan="100%"><dl>
+  <dt><code>ai_m61_32s_kit@DEFAULT/bl618m05q2i</code></dt>   <dd> <code>name: kernel.cache.api</code> <code>status: passed</code> <code>execution_time: 4.36</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00</code> <code>rig: rig0</code></dd>
+  <dt><code>ai_wb2_12f_kit/bl602c00q2i</code></dt>   <dd> <code>name: kernel.cache.api</code> <code>status: passed</code> <code>execution_time: 5.08</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00</code> <code>rig: rig0</code></dd>
+ </dl></td><td/></tr>
+ <tr id="7d1bca7cf5b5_kernel.common.lto" class="details"><td colspan="100%"><dl>
+  <dt><code>ai_m61_32s_kit@DEFAULT/bl618m05q2i</code></dt>   <dd> <code>name: kernel.common.lto</code> <code>status: failed</code> <code>execution_time: 124.74</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00</code> <code>rig: rig0</code><pre>I: Built-in PSRAM Present, size: 0x400000 bytes
+I: No Built-in Flash
+I: PSRAM ID: 5f
+***** delaying boot 500ms (per build configuration) *****
+*** Booting Zephyr OS build v4.4.0-5796-g7d1bca7cf5b5 (delayed boot 500ms) ***
+Running TESTSUITE atomic
+===================================================================
+START - test_atomic
+ PASS - test_atomic in 0.001 seconds
+===================================================================
+START - test_atomic_overflow
+ PASS - test_atomic_overflow in 0.001 seconds
+===================================================================
+START - test_threads_access_atomic
+ PASS - test_threads_access_atomic in 0.040 seconds
+===================================================================
+TESTSUITE atomic succeeded
+Running TESTSUITE bitarray
+===================================================================
+START - test_bitarray_alloc_divisor[loop/0]
+Testing bit array alloc and free with divisor 1
+ PASS - test_bitarray_alloc_divisor[loop/0] in 0.006 seconds
+===================================================================
+START - test_bitarray_alloc_divisor[loop/1]
+Testing bit array alloc and free with divisor 2
+ PASS - test_bitarray_alloc_divisor[loop/1] in 0.006 seconds
+===================================================================
+START - test_bitarray_alloc_divisor[loop/2]
+Testing bit array alloc and free with divisor 4
+ PASS - test_bitarray_alloc_divisor[loop/2] in 0.006 seconds
+===================================================================
+START - test_bitarray_alloc_divisor[loop/3]
+Testing bit array alloc and free with divisor 8
+ PASS - test_bitarray_alloc_divisor[loop/3] in 0.006 seconds
+===================================================================
+START - test_bitarray_alloc_divisor[loop/4]
+Testing bit array alloc and free with divisor 16
+ PASS - test_bitarray_alloc_divisor[loop/4] in 0.006 seconds
+===================================================================
+START - test_bitarray_alloc_divisor[loop/5]
+Testing bit array alloc and free with divisor 32
+ PASS - test_bitarray_alloc_divisor[loop/5] in 0.006 seconds
+===================================================================
+START - test_bitarray_alloc_divisor[loop/6]
+Testing bit array alloc and free with divisor 64
+ PASS - test_bitarray_alloc_divisor[loop/6] in 0.006 seconds
+===================================================================
+START - test_bitarray_alloc_free
+Testing bit array alloc and free with predefined patterns using 128 bit array
+Testing bit array alloc and free with predefined patterns using 32 bit array
+Testing bit array alloc and free with divisor 1
+Testing bit array alloc and free with divisor 2
+Testing bit array alloc and free with divisor 4
+Testing bit array alloc and free with divisor 8
+Testing bit array alloc and free with divisor 16
+Testing bit array alloc and free with divisor 32
+Testing bit array alloc and free with divisor 64
+Testing bit array interval alloc and free
+ PASS - test_bitarray_alloc_free in 0.048 seconds
+===================================================================
+START - test_bitarray_declare
+ PASS - test_bitarray_declare in 0.001 seconds
+===================================================================
+START - test_bitarray_find_nth_set
+Testing bit array nth bit set finding spanning single bundle
+Testing bit array nth bit set finding spanning multiple bundles
+Testing error cases
+ PASS - test_bitarray_find_nth_set in 0.013 seconds
+===================================================================
+START - test_bitarray_popcount_region
+Testing bit array region popcount spanning single bundle
+Testing bit array region popcount spanning multiple bundles
+Testing edge/error cases
+ PASS - test_bitarray_popcount_region in 0.013 seconds
+===================================================================
+START - test_bitarray_region_set_clear
+Testing bit array region bit tests
+Testing bit array region bit manipulations
+ PASS - test_bitarray_region_set_clear in 0.008 seconds
+===================================================================
+START - test_bitarray_set_clear
+ PASS - test_bitarray_set_clear in 0.002 seconds
+===================================================================
+START - test_bitarray_xor
+Testing bit array region xor spanning single bundle
+Testing bit array region xor spanning multiple bundles
+Testing error cases
+ PASS - test_bitarray_xor in 0.012 seconds
+===================================================================
+START - test_ffs
+ PASS - test_ffs in 0.001 seconds
+===================================================================
+TESTSUITE bitarray succeeded
+Running TESTSUITE boot_delay
+===================================================================
+START - test_bootdelay
+ PASS - test_bootdelay in 0.001 seconds
+===================================================================
+TESTSUITE boot_delay succeeded
+Running TESTSUITE byteorder
+===================================================================
+START - test_byteorder_mem_swap
+ PASS - test_byteorder_mem_swap in 0.001 seconds
+===================================================================
+START - test_byteorder_memcpy_swap
+ PASS - test_byteorder_memcpy_swap in 0.001 seconds
+===================================================================
+START - test_sys_be_to_cpu
+ PASS - test_sys_be_to_cpu in 0.001 seconds
+===================================================================
+START - test_sys_cpu_to_be
+ PASS - test_sys_cpu_to_be in 0.001 seconds
+===================================================================
+START - test_sys_cpu_to_le
+ PASS - test_sys_cpu_to_le in 0.001 seconds
+===================================================================
+START - test_sys_get_be16
+ PASS - test_sys_get_be16 in 0.001 seconds
+===================================================================
+START - test_sys_get_be24
+ PASS - test_sys_get_be24 in 0.001 seconds
+===================================================================
+START - test_sys_get_be32
+ PASS - test_sys_get_be32 in 0.001 seconds
+===================================================================
+START - test_sys_get_be40
+ PASS - test_sys_get_be40 in 0.001 seconds
+===================================================================
+START - test_sys_get_be48
+ PASS - test_sys_get_be48 in 0.001 seconds
+===================================================================
+START - test_sys_get_be64
+ PASS - test_sys_get_be64 in 0.001 seconds
+===================================================================
+START - test_sys_get_be
+ PASS - test_sys_get_be in 0.001 seconds
+===================================================================
+START - test_sys_get_le16
+ PASS - test_sys_get_le16 in 0.001 seconds
+===================================================================
+START - test_sys_get_le24
+ PASS - test_sys_get_le24 in 0.001 seconds
+===================================================================
+START - test_sys_get_le32
+ PASS - test_sys_get_le32 in 0.001 seconds
+===================================================================
+START - test_sys_get_le40
+ PASS - test_sys_get_le40 in 0.001 seconds
+===================================================================
+START - test_sys_get_le48
+ PASS - test_sys_get_le48 in 0.001 seconds
+===================================================================
+START - test_sys_get_le64
+ PASS - test_sys_get_le64 in 0.001 seconds
+===================================================================
+START - test_sys_get_le
+ PASS - test_sys_get_le in 0.001 seconds
+===================================================================
+START - test_sys_le_to_cpu
+ PASS - test_sys_le_to_cpu in 0.001 seconds
+===================================================================
+START - test_sys_put_be16
+ PASS - test_sys_put_be16 in 0.001 seconds
+===================================================================
+START - test_sys_put_be24
+ PASS - test_sys_put_be24 in 0.001 seconds
+===================================================================
+START - test_sys_put_be32
+ PASS - test_sys_put_be32 in 0.001 seconds
+===================================================================
+START - test_sys_put_be40
+ PASS - test_sys_put_be40 in 0.001 seconds
+===================================================================
+START - test_sys_put_be48
+ PASS - test_sys_put_be48 in 0.001 seconds
+===================================================================
+START - test_sys_put_be64
+ PASS - test_sys_put_be64 in 0.001 seconds
+===================================================================
+START - test_sys_put_be
+ PASS - test_sys_put_be in 0.001 seconds
+===================================================================
+START - test_sys_put_le16
+ PASS - test_sys_put_le16 in 0.001 seconds
+===================================================================
+START - test_sys_put_le24
+ PASS - test_sys_put_le24 in 0.001 seconds
+===================================================================
+START - test_sys_put_le32
+ PASS - test_sys_put_le32 in 0.001 seconds
+===================================================================
+START - test_sys_put_le40
+ PASS - test_sys_put_le40 in 0.001 seconds
+===================================================================
+START - test_sys_put_le48
+ PASS - test_sys_put_le48 in 0.001 seconds
+===================================================================
+START - test_sys_put_le64
+ PASS - test_sys_put_le64 in 0.001 seconds
+===================================================================
+START - test_sys_put_le
+ PASS - test_sys_put_le in 0.001 seconds
+===================================================================
+START - test_sys_uint16_to_array
+ PASS - test_sys_uint16_to_array in 0.001 seconds
+===================================================================
+START - test_sys_uint32_to_array
+ PASS - test_sys_uint32_to_array in 0.001 seconds
+===================================================================
+START - test_sys_uint64_to_array
+ PASS - test_sys_uint64_to_array in 0.001 seconds
+===================================================================
+TESTSUITE byteorder succeeded
+Running TESTSUITE clock
+===================================================================
+START - test_clock_cycle_32
+ PASS - test_clock_cycle_32 in 0.003 seconds
+===================================================================
+START - test_clock_cycle_64
+ PASS - test_clock_cycle_64 in 0.002 seconds
+===================================================================
+START - test_clock_uptime
+ PASS - test_clock_uptime in 0.012 seconds
+===================================================================
+START - test_ms_time_duration
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/kernel/common/src/clock.c:228: clock_test_ms_time_duration: (tdata.duration_count == 1 is false)
+duration 0 not 1
+ FAIL - test_ms_time_duration in 0.184 seconds
+===================================================================
+TESTSUITE clock failed.
+Running TESTSUITE common
+===================================================================
+START - test_bounds_check_mitigation
+ PASS - test_bounds_check_mitigation in 0.001 seconds
+===================================================================
+START - test_version
+ PASS - test_version in 0.001 seconds
+===================================================================
+TESTSUITE common succeeded
+Running TESTSUITE common_1cpu
+===================================================================
+START - test_nested_irq_offload
+</pre></dd>
+ </dl></td><td/></tr>
+ <tr id="7d1bca7cf5b5_kernel.common.lto.singlethreaded" class="details"><td colspan="100%"><dl>
+  <dt><code>ai_m61_32s_kit@DEFAULT/bl618m05q2i</code></dt>   <dd> <code>name: kernel.common.lto.singlethreaded</code> <code>status: failed</code> <code>execution_time: 125.17</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00</code> <code>rig: rig0</code><pre>I: Built-in PSRAM Present, size: 0x400000 bytes
+I: No Built-in Flash
+I: PSRAM ID: 5f
+***** delaying boot 500ms (per build configuration) *****
+*** Booting Zephyr OS build v4.4.0-5796-g7d1bca7cf5b5 (delayed boot 500ms) ***
+Running TESTSUITE atomic
+===================================================================
+START - test_atomic
+ PASS - test_atomic in 0.001 seconds
+===================================================================
+START - test_atomic_overflow
+ PASS - test_atomic_overflow in 0.001 seconds
+===================================================================
+START - test_threads_access_atomic
+ PASS - test_threads_access_atomic in 0.040 seconds
+===================================================================
+TESTSUITE atomic succeeded
+Running TESTSUITE bitarray
+===================================================================
+START - test_bitarray_alloc_divisor[loop/0]
+Testing bit array alloc and free with divisor 1
+ PASS - test_bitarray_alloc_divisor[loop/0] in 0.006 seconds
+===================================================================
+START - test_bitarray_alloc_divisor[loop/1]
+Testing bit array alloc and free with divisor 2
+ PASS - test_bitarray_alloc_divisor[loop/1] in 0.006 seconds
+===================================================================
+START - test_bitarray_alloc_divisor[loop/2]
+Testing bit array alloc and free with divisor 4
+ PASS - test_bitarray_alloc_divisor[loop/2] in 0.006 seconds
+===================================================================
+START - test_bitarray_alloc_divisor[loop/3]
+Testing bit array alloc and free with divisor 8
+ PASS - test_bitarray_alloc_divisor[loop/3] in 0.006 seconds
+===================================================================
+START - test_bitarray_alloc_divisor[loop/4]
+Testing bit array alloc and free with divisor 16
+ PASS - test_bitarray_alloc_divisor[loop/4] in 0.006 seconds
+===================================================================
+START - test_bitarray_alloc_divisor[loop/5]
+Testing bit array alloc and free with divisor 32
+ PASS - test_bitarray_alloc_divisor[loop/5] in 0.006 seconds
+===================================================================
+START - test_bitarray_alloc_divisor[loop/6]
+Testing bit array alloc and free with divisor 64
+ PASS - test_bitarray_alloc_divisor[loop/6] in 0.006 seconds
+===================================================================
+START - test_bitarray_alloc_free
+Testing bit array alloc and free with predefined patterns using 128 bit array
+Testing bit array alloc and free with predefined patterns using 32 bit array
+Testing bit array alloc and free with divisor 1
+Testing bit array alloc and free with divisor 2
+Testing bit array alloc and free with divisor 4
+Testing bit array alloc and free with divisor 8
+Testing bit array alloc and free with divisor 16
+Testing bit array alloc and free with divisor 32
+Testing bit array alloc and free with divisor 64
+Testing bit array interval alloc and free
+ PASS - test_bitarray_alloc_free in 0.048 seconds
+===================================================================
+START - test_bitarray_declare
+ PASS - test_bitarray_declare in 0.001 seconds
+===================================================================
+START - test_bitarray_find_nth_set
+Testing bit array nth bit set finding spanning single bundle
+Testing bit array nth bit set finding spanning multiple bundles
+Testing error cases
+ PASS - test_bitarray_find_nth_set in 0.013 seconds
+===================================================================
+START - test_bitarray_popcount_region
+Testing bit array region popcount spanning single bundle
+Testing bit array region popcount spanning multiple bundles
+Testing edge/error cases
+ PASS - test_bitarray_popcount_region in 0.013 seconds
+===================================================================
+START - test_bitarray_region_set_clear
+Testing bit array region bit tests
+Testing bit array region bit manipulations
+ PASS - test_bitarray_region_set_clear in 0.008 seconds
+===================================================================
+START - test_bitarray_set_clear
+ PASS - test_bitarray_set_clear in 0.002 seconds
+===================================================================
+START - test_bitarray_xor
+Testing bit array region xor spanning single bundle
+Testing bit array region xor spanning multiple bundles
+Testing error cases
+ PASS - test_bitarray_xor in 0.012 seconds
+===================================================================
+START - test_ffs
+ PASS - test_ffs in 0.001 seconds
+===================================================================
+TESTSUITE bitarray succeeded
+Running TESTSUITE boot_delay
+===================================================================
+START - test_bootdelay
+ PASS - test_bootdelay in 0.001 seconds
+===================================================================
+TESTSUITE boot_delay succeeded
+Running TESTSUITE byteorder
+===================================================================
+START - test_byteorder_mem_swap
+ PASS - test_byteorder_mem_swap in 0.001 seconds
+===================================================================
+START - test_byteorder_memcpy_swap
+ PASS - test_byteorder_memcpy_swap in 0.001 seconds
+===================================================================
+START - test_sys_be_to_cpu
+ PASS - test_sys_be_to_cpu in 0.001 seconds
+===================================================================
+START - test_sys_cpu_to_be
+ PASS - test_sys_cpu_to_be in 0.001 seconds
+===================================================================
+START - test_sys_cpu_to_le
+ PASS - test_sys_cpu_to_le in 0.001 seconds
+===================================================================
+START - test_sys_get_be16
+ PASS - test_sys_get_be16 in 0.001 seconds
+===================================================================
+START - test_sys_get_be24
+ PASS - test_sys_get_be24 in 0.001 seconds
+===================================================================
+START - test_sys_get_be32
+ PASS - test_sys_get_be32 in 0.001 seconds
+===================================================================
+START - test_sys_get_be40
+ PASS - test_sys_get_be40 in 0.001 seconds
+===================================================================
+START - test_sys_get_be48
+ PASS - test_sys_get_be48 in 0.001 seconds
+===================================================================
+START - test_sys_get_be64
+ PASS - test_sys_get_be64 in 0.001 seconds
+===================================================================
+START - test_sys_get_be
+ PASS - test_sys_get_be in 0.001 seconds
+===================================================================
+START - test_sys_get_le16
+ PASS - test_sys_get_le16 in 0.001 seconds
+===================================================================
+START - test_sys_get_le24
+ PASS - test_sys_get_le24 in 0.001 seconds
+===================================================================
+START - test_sys_get_le32
+ PASS - test_sys_get_le32 in 0.001 seconds
+===================================================================
+START - test_sys_get_le40
+ PASS - test_sys_get_le40 in 0.001 seconds
+===================================================================
+START - test_sys_get_le48
+ PASS - test_sys_get_le48 in 0.001 seconds
+===================================================================
+START - test_sys_get_le64
+ PASS - test_sys_get_le64 in 0.001 seconds
+===================================================================
+START - test_sys_get_le
+ PASS - test_sys_get_le in 0.001 seconds
+===================================================================
+START - test_sys_le_to_cpu
+ PASS - test_sys_le_to_cpu in 0.001 seconds
+===================================================================
+START - test_sys_put_be16
+ PASS - test_sys_put_be16 in 0.001 seconds
+===================================================================
+START - test_sys_put_be24
+ PASS - test_sys_put_be24 in 0.001 seconds
+===================================================================
+START - test_sys_put_be32
+ PASS - test_sys_put_be32 in 0.001 seconds
+===================================================================
+START - test_sys_put_be40
+ PASS - test_sys_put_be40 in 0.001 seconds
+===================================================================
+START - test_sys_put_be48
+ PASS - test_sys_put_be48 in 0.001 seconds
+===================================================================
+START - test_sys_put_be64
+ PASS - test_sys_put_be64 in 0.001 seconds
+===================================================================
+START - test_sys_put_be
+ PASS - test_sys_put_be in 0.001 seconds
+===================================================================
+START - test_sys_put_le16
+ PASS - test_sys_put_le16 in 0.001 seconds
+===================================================================
+START - test_sys_put_le24
+ PASS - test_sys_put_le24 in 0.001 seconds
+===================================================================
+START - test_sys_put_le32
+ PASS - test_sys_put_le32 in 0.001 seconds
+===================================================================
+START - test_sys_put_le40
+ PASS - test_sys_put_le40 in 0.001 seconds
+===================================================================
+START - test_sys_put_le48
+ PASS - test_sys_put_le48 in 0.001 seconds
+===================================================================
+START - test_sys_put_le64
+ PASS - test_sys_put_le64 in 0.001 seconds
+===================================================================
+START - test_sys_put_le
+ PASS - test_sys_put_le in 0.001 seconds
+===================================================================
+START - test_sys_uint16_to_array
+ PASS - test_sys_uint16_to_array in 0.001 seconds
+===================================================================
+START - test_sys_uint32_to_array
+ PASS - test_sys_uint32_to_array in 0.001 seconds
+===================================================================
+START - test_sys_uint64_to_array
+ PASS - test_sys_uint64_to_array in 0.001 seconds
+===================================================================
+TESTSUITE byteorder succeeded
+Running TESTSUITE clock
+===================================================================
+START - test_clock_cycle_32
+ PASS - test_clock_cycle_32 in 0.003 seconds
+===================================================================
+START - test_clock_cycle_64
+ PASS - test_clock_cycle_64 in 0.002 seconds
+===================================================================
+START - test_clock_uptime
+ PASS - test_clock_uptime in 0.012 seconds
+===================================================================
+START - test_ms_time_duration
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/kernel/common/src/clock.c:228: clock_test_ms_time_duration: (tdata.duration_count == 1 is false)
+duration 0 not 1
+ FAIL - test_ms_time_duration in 0.184 seconds
+===================================================================
+TESTSUITE clock failed.
+Running TESTSUITE common
+===================================================================
+START - test_bounds_check_mitigation
+ PASS - test_bounds_check_mitigation in 0.001 seconds
+===================================================================
+START - test_version
+ PASS - test_version in 0.001 seconds
+===================================================================
+TESTSUITE common succeeded
+Running TESTSUITE common_1cpu
+===================================================================
+START - test_nested_irq_offload
+</pre></dd>
+ </dl></td><td/></tr>
+ <tr id="7d1bca7cf5b5_sample.basic.helloworld" class="details"><td colspan="100%"><dl>
+  <dt><code>ai_m61_32s_kit@DEFAULT/bl618m05q2i</code></dt>   <dd> <code>name: sample.basic.helloworld</code> <code>status: passed</code> <code>execution_time: 4.23</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00</code> <code>rig: rig0</code></dd>
+  <dt><code>ai_wb2_12f_kit/bl602c00q2i</code></dt>   <dd> <code>name: sample.basic.helloworld</code> <code>status: passed</code> <code>execution_time: 5.10</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00</code> <code>rig: rig0</code></dd>
+ </dl></td><td/></tr>
+ <tr id="7d1bca7cf5b5_sample.kernel.philosopher" class="details"><td colspan="100%"><dl>
+  <dt><code>ai_m61_32s_kit@DEFAULT/bl618m05q2i</code></dt>   <dd> <code>name: sample.kernel.philosopher</code> <code>status: passed</code> <code>execution_time: 4.13</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00</code> <code>rig: rig0</code></dd>
+  <dt><code>ai_wb2_12f_kit/bl602c00q2i</code></dt>   <dd> <code>name: sample.kernel.philosopher</code> <code>status: passed</code> <code>execution_time: 5.23</code> <code>retries: 0</code> <code>dut: /dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00</code> <code>rig: rig0</code></dd>
+ </dl></td><td/></tr>
 </tbody></table>
   </body>
 </html>
