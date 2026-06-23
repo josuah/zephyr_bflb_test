@@ -1,0 +1,1476 @@
+{
+    "environment":{
+        "os":"Linux",
+        "zephyr_version":"v4.4.0-6036-g1704f47ac622",
+        "toolchain":"zephyr/gnu",
+        "commit_date":"2026-06-23T17:41:00-04:00",
+        "run_date":"2026-06-23T21:41:22+00:00",
+        "options":{
+            "help":null,
+            "zephyr_base":null,
+            "quiet":0,
+            "command":"twister",
+            "device_testing":true,
+            "hardware_map":"/home/josuah/z/rig0/zephyr_bflb_test/rigs/rig0.hwmap.yml",
+            "platform":[
+                "ai_wb2_12f_kit",
+                "ai_m61_32s_kit"
+            ],
+            "test":[
+                "arch.riscv.fpu_sharing",
+                "arch.riscv.pm_s2ram.clic",
+                "drivers.console.uart",
+                "drivers.flash.common.default",
+                "drivers.flash.common.test_storage_partition",
+                "drivers.gpio.get_direction",
+                "kernel.cache.api",
+                "kernel.common.lto",
+                "kernel.common.lto.singlethreaded",
+                "pm.device_runtime",
+                "sample.basic.helloworld",
+                "sample.kernel.philosopher"
+            ]
+        }
+    },
+    "testsuites":[
+        {
+            "name":"kernel.cache.api",
+            "arch":"riscv",
+            "platform":"ai_m61_32s_kit@DEFAULT/bl618m05q2i",
+            "path":"tests/kernel/cache",
+            "run_id":"607c8908cb1094177166c5d7a74fec16",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00",
+            "status":"failed",
+            "log":"I: Built-in PSRAM Present, size: 0x400000 bytes\r\nI: No Built-in Flash\r\nI: PSRAM ID: 5f\r\n",
+            "reason":"Unknown Error",
+            "execution_time":"64.12",
+            "build_time":"64.12",
+            "testcases":[
+                {
+                    "identifier":"kernel.cache.api.cache_api.data_cache_api_user",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.cache.api.cache_api.data_cache_api",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.cache.api.cache_api.instr_cache_api",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                }
+            ]
+        },
+        {
+            "name":"kernel.cache.api",
+            "arch":"riscv",
+            "platform":"ai_wb2_12f_kit/bl602c00q2i",
+            "path":"tests/kernel/cache",
+            "run_id":"ed566c091ef3c2648ed39ea6ca66fef9",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00",
+            "status":"passed",
+            "execution_time":"5.02",
+            "build_time":"69.79",
+            "testcases":[
+                {
+                    "identifier":"kernel.cache.api.cache_api.data_cache_api_user",
+                    "execution_time":"0.00",
+                    "status":"passed"
+                },
+                {
+                    "identifier":"kernel.cache.api.cache_api.data_cache_api",
+                    "execution_time":"0.00",
+                    "status":"passed"
+                },
+                {
+                    "identifier":"kernel.cache.api.cache_api.instr_cache_api",
+                    "execution_time":"0.00",
+                    "status":"passed"
+                }
+            ]
+        },
+        {
+            "name":"kernel.common.lto",
+            "arch":"riscv",
+            "platform":"ai_m61_32s_kit@DEFAULT/bl618m05q2i",
+            "path":"tests/kernel/common",
+            "run_id":"304636d02571a3c709c1c1395430caa9",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00",
+            "status":"failed",
+            "log":"I: Built-in PSRAM Present, size: 0x400000 bytes\r\nI: No Built-in Flash\r\nI: PSRAM ID: 5f\r\n",
+            "reason":"Unknown Error",
+            "execution_time":"124.49",
+            "build_time":"88.88",
+            "testcases":[
+                {
+                    "identifier":"kernel.common.lto.printk.printk",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.atomic.atomic_overflow",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.atomic.threads_access_atomic",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.atomic.atomic",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.bitarray.ffs",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.bitarray.bitarray_region_set_clear",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.bitarray.bitarray_find_nth_set",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.bitarray.bitarray_xor",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.bitarray.bitarray_popcount_region",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.bitarray.bitarray_alloc_divisor",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.bitarray.bitarray_alloc_free",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.bitarray.bitarray_set_clear",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.bitarray.bitarray_declare",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_get_be",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_get_le",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_put_be",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_put_le",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_cpu_to_be",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_be_to_cpu",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_cpu_to_le",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_le_to_cpu",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_uint64_to_array",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_uint32_to_array",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_uint16_to_array",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_put_le64",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_get_le64",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_put_le48",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_get_le48",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_put_le40",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_get_le40",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_put_le32",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_get_le32",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_put_le24",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_get_le24",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_put_le16",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_get_le16",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_put_be16",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_get_be16",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_put_be24",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_get_be24",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_put_be32",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_get_be32",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_put_be48",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_get_be48",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_put_be40",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_get_be40",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_put_be64",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.sys_get_be64",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.byteorder_mem_swap",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.byteorder.byteorder_memcpy_swap",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.clock.ms_time_duration",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.clock.clock_cycle_64",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.clock.clock_cycle_32",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.clock.clock_uptime",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.common.bounds_check_mitigation",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.common.version",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.common_1cpu.timeout_order",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.multilib.multilib",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.common_errno.errno",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.common_errno.thread_context",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.boot_delay.bootdelay",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.pow2.pow2_ceil",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.common_1cpu.nested_irq_offload",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.irq_offload.irq_offload",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                }
+            ]
+        },
+        {
+            "name":"kernel.common.lto.singlethreaded",
+            "arch":"riscv",
+            "platform":"ai_m61_32s_kit@DEFAULT/bl618m05q2i",
+            "path":"tests/kernel/common",
+            "run_id":"874cac73667c723bb4f86a92a4397b55",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00",
+            "status":"failed",
+            "log":"I: Built-in PSRAM Present, size: 0x400000 bytes\r\nI: No Built-in Flash\r\nI: PSRAM ID: 5f\r\n",
+            "reason":"Unknown Error",
+            "execution_time":"125.16",
+            "build_time":"95.25",
+            "testcases":[
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.printk.printk",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.atomic.atomic_overflow",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.atomic.threads_access_atomic",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.atomic.atomic",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.bitarray.ffs",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.bitarray.bitarray_region_set_clear",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.bitarray.bitarray_find_nth_set",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.bitarray.bitarray_xor",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.bitarray.bitarray_popcount_region",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.bitarray.bitarray_alloc_divisor",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.bitarray.bitarray_alloc_free",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.bitarray.bitarray_set_clear",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.bitarray.bitarray_declare",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_get_be",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_get_le",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_put_be",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_put_le",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_cpu_to_be",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_be_to_cpu",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_cpu_to_le",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_le_to_cpu",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_uint64_to_array",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_uint32_to_array",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_uint16_to_array",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_put_le64",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_get_le64",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_put_le48",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_get_le48",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_put_le40",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_get_le40",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_put_le32",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_get_le32",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_put_le24",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_get_le24",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_put_le16",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_get_le16",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_put_be16",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_get_be16",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_put_be24",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_get_be24",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_put_be32",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_get_be32",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_put_be48",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_get_be48",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_put_be40",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_get_be40",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_put_be64",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.sys_get_be64",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.byteorder_mem_swap",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.byteorder.byteorder_memcpy_swap",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.clock.ms_time_duration",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.clock.clock_cycle_64",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.clock.clock_cycle_32",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.clock.clock_uptime",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.common.bounds_check_mitigation",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.common.version",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.common_1cpu.timeout_order",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.multilib.multilib",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.common_errno.errno",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.common_errno.thread_context",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.boot_delay.bootdelay",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.pow2.pow2_ceil",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.common_1cpu.nested_irq_offload",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"kernel.common.lto.singlethreaded.irq_offload.irq_offload",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                }
+            ]
+        },
+        {
+            "name":"drivers.console.uart",
+            "arch":"riscv",
+            "platform":"ai_m61_32s_kit@DEFAULT/bl618m05q2i",
+            "path":"tests/drivers/console/hello_world",
+            "run_id":"88a21b39a061235a00a48d36ba2e04ee",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00",
+            "status":"failed",
+            "log":"I: Built-in PSRAM Present, size: 0x400000 bytes\r\nI: No Built-in Flash\r\nI: PSRAM ID: 5f\r\n",
+            "reason":"Unknown Error",
+            "execution_time":"64.02",
+            "build_time":"84.14",
+            "testcases":[
+                {
+                    "identifier":"drivers.console.uart",
+                    "execution_time":"64.02",
+                    "status":"failed"
+                }
+            ]
+        },
+        {
+            "name":"drivers.console.uart",
+            "arch":"riscv",
+            "platform":"ai_wb2_12f_kit/bl602c00q2i",
+            "path":"tests/drivers/console/hello_world",
+            "run_id":"6c0c4ab08d7fe2c18a6f40560484264c",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00",
+            "status":"passed",
+            "execution_time":"5.99",
+            "build_time":"80.18",
+            "testcases":[
+                {
+                    "identifier":"drivers.console.uart",
+                    "execution_time":"5.99",
+                    "status":"passed"
+                }
+            ]
+        },
+        {
+            "name":"drivers.gpio.get_direction",
+            "arch":"riscv",
+            "platform":"ai_m61_32s_kit@DEFAULT/bl618m05q2i",
+            "path":"tests/drivers/gpio/gpio_get_direction",
+            "run_id":"d65af176c7e763fec4f631a84acc7786",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00",
+            "status":"failed",
+            "log":"I: Built-in PSRAM Present, size: 0x400000 bytes\r\nI: No Built-in Flash\r\nI: PSRAM ID: 5f\r\n",
+            "reason":"Unknown Error",
+            "execution_time":"64.86",
+            "build_time":"83.69",
+            "testcases":[
+                {
+                    "identifier":"drivers.gpio.get_direction.gpio_get_direction.input_output",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"drivers.gpio.get_direction.gpio_get_direction.output",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"drivers.gpio.get_direction.gpio_get_direction.input",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"drivers.gpio.get_direction.gpio_get_direction.disconnect",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                }
+            ]
+        },
+        {
+            "name":"drivers.gpio.get_direction",
+            "arch":"riscv",
+            "platform":"ai_wb2_12f_kit/bl602c00q2i",
+            "path":"tests/drivers/gpio/gpio_get_direction",
+            "run_id":"7c833741b8417d50072f569c78684763",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00",
+            "status":"passed",
+            "execution_time":"6.00",
+            "build_time":"75.97",
+            "testcases":[
+                {
+                    "identifier":"drivers.gpio.get_direction.gpio_get_direction.input_output",
+                    "execution_time":"0.00",
+                    "status":"skipped",
+                    "reason":"ztest skip"
+                },
+                {
+                    "identifier":"drivers.gpio.get_direction.gpio_get_direction.output",
+                    "execution_time":"0.00",
+                    "status":"skipped",
+                    "reason":"ztest skip"
+                },
+                {
+                    "identifier":"drivers.gpio.get_direction.gpio_get_direction.input",
+                    "execution_time":"0.00",
+                    "status":"skipped",
+                    "reason":"ztest skip"
+                },
+                {
+                    "identifier":"drivers.gpio.get_direction.gpio_get_direction.disconnect",
+                    "execution_time":"0.00",
+                    "status":"skipped",
+                    "reason":"ztest skip"
+                }
+            ]
+        },
+        {
+            "name":"drivers.flash.common.default",
+            "arch":"riscv",
+            "platform":"ai_m61_32s_kit@DEFAULT/bl618m05q2i",
+            "path":"tests/drivers/flash/common",
+            "run_id":"8d2194cdf9682f246c3121284ee3f7bb",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00",
+            "status":"failed",
+            "log":"I: Built-in PSRAM Present, size: 0x400000 bytes\r\nI: No Built-in Flash\r\nI: PSRAM ID: 5f\r\n",
+            "reason":"Unknown Error",
+            "execution_time":"64.20",
+            "build_time":"85.16",
+            "testcases":[
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_copy",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_page_layout",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.get_size",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.supply_gpios_control",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_write_read_over_the_packet_limit",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_erase",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_flatten",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_fill",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.read_unaligned_address",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                }
+            ]
+        },
+        {
+            "name":"drivers.flash.common.default",
+            "arch":"riscv",
+            "platform":"ai_wb2_12f_kit/bl602c00q2i",
+            "path":"tests/drivers/flash/common",
+            "run_id":"e1d9fff8202618c97246ec9c0f564af3",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00",
+            "status":"passed",
+            "execution_time":"7.90",
+            "build_time":"80.06",
+            "testcases":[
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_copy",
+                    "execution_time":"0.64",
+                    "status":"passed"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_page_layout",
+                    "execution_time":"0.04",
+                    "status":"passed"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.get_size",
+                    "execution_time":"0.01",
+                    "status":"skipped",
+                    "reason":"ztest skip"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.supply_gpios_control",
+                    "execution_time":"0.04",
+                    "status":"skipped",
+                    "reason":"ztest skip"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_write_read_over_the_packet_limit",
+                    "execution_time":"0.01",
+                    "status":"skipped",
+                    "reason":"ztest skip"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_erase",
+                    "execution_time":"0.07",
+                    "status":"passed"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_flatten",
+                    "execution_time":"0.57",
+                    "status":"passed"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.flash_fill",
+                    "execution_time":"0.54",
+                    "status":"passed"
+                },
+                {
+                    "identifier":"drivers.flash.common.default.flash_driver.read_unaligned_address",
+                    "execution_time":"0.04",
+                    "status":"passed"
+                }
+            ]
+        },
+        {
+            "name":"drivers.flash.common.test_storage_partition",
+            "arch":"riscv",
+            "platform":"ai_m61_32s_kit@DEFAULT/bl618m05q2i",
+            "path":"tests/drivers/flash/common",
+            "run_id":"102a52e67e7a22c970ee76bcbcbd9da0",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00",
+            "status":"failed",
+            "log":"I: Built-in PSRAM Present, size: 0x400000 bytes\r\nI: No Built-in Flash\r\nI: PSRAM ID: 5f\r\n",
+            "reason":"Unknown Error",
+            "execution_time":"65.28",
+            "build_time":"86.53",
+            "testcases":[
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_copy",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_page_layout",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.get_size",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.supply_gpios_control",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_write_read_over_the_packet_limit",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_erase",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_flatten",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_fill",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.read_unaligned_address",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                }
+            ]
+        },
+        {
+            "name":"drivers.flash.common.test_storage_partition",
+            "arch":"riscv",
+            "platform":"ai_wb2_12f_kit/bl602c00q2i",
+            "path":"tests/drivers/flash/common",
+            "run_id":"c0340efce6713ff2f461eae085945bb6",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00",
+            "status":"passed",
+            "execution_time":"7.25",
+            "build_time":"78.88",
+            "testcases":[
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_copy",
+                    "execution_time":"0.64",
+                    "status":"passed"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_page_layout",
+                    "execution_time":"0.04",
+                    "status":"passed"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.get_size",
+                    "execution_time":"0.01",
+                    "status":"skipped",
+                    "reason":"ztest skip"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.supply_gpios_control",
+                    "execution_time":"0.04",
+                    "status":"skipped",
+                    "reason":"ztest skip"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_write_read_over_the_packet_limit",
+                    "execution_time":"0.01",
+                    "status":"skipped",
+                    "reason":"ztest skip"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_erase",
+                    "execution_time":"0.07",
+                    "status":"passed"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_flatten",
+                    "execution_time":"0.57",
+                    "status":"passed"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.flash_fill",
+                    "execution_time":"0.54",
+                    "status":"passed"
+                },
+                {
+                    "identifier":"drivers.flash.common.test_storage_partition.flash_driver.read_unaligned_address",
+                    "execution_time":"0.04",
+                    "status":"passed"
+                }
+            ]
+        },
+        {
+            "name":"arch.riscv.fpu_sharing",
+            "arch":"riscv",
+            "platform":"ai_m61_32s_kit@DEFAULT/bl618m05q2i",
+            "path":"tests/arch/riscv/fpu_sharing",
+            "run_id":"0fa21445ac1e4eaa49ebbdae82113251",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00",
+            "status":"failed",
+            "log":"I: Built-in PSRAM Present, size: 0x400000 bytes\r\nI: No Built-in Flash\r\nI: PSRAM ID: 5f\r\n",
+            "reason":"Unknown Error",
+            "execution_time":"65.25",
+            "build_time":"83.25",
+            "testcases":[
+                {
+                    "identifier":"arch.riscv.fpu_sharing.riscv_fpu_sharing.fp_insn_trap",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"arch.riscv.fpu_sharing.riscv_fpu_sharing.thread_vs_exc_interaction",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"arch.riscv.fpu_sharing.riscv_fpu_sharing.multi_thread_interaction",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                },
+                {
+                    "identifier":"arch.riscv.fpu_sharing.riscv_fpu_sharing.basics",
+                    "execution_time":"0.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                }
+            ]
+        },
+        {
+            "name":"arch.riscv.fpu_sharing",
+            "arch":"riscv",
+            "platform":"ai_wb2_12f_kit/bl602c00q2i",
+            "path":"tests/arch/riscv/fpu_sharing",
+            "run_id":"ebd0d3bcecc412a01dfd654da3e82fe6",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00",
+            "status":"failed",
+            "log":"*** Booting Zephyr OS build v4.4.0-6036-g1704f47ac622 ***\r\nRunning TESTSUITE riscv_fpu_sharing\r\n===================================================================\r\nSTART - test_basics\r\n\r\n    Assertion failed at WEST_TOPDIR/zephyr/tests/arch/riscv/fpu_sharing/src/main.c:59: riscv_fpu_sharing_test_basics: fpu_is_clean() is false\r\n\r\n FAIL - test_basics in 0.013 seconds\r\n===================================================================\r\nSTART - test_fp_insn_trap\r\n PASS - test_fp_insn_trap in 0.001 seconds\r\n===================================================================\r\nSTART - test_multi_thread_interaction\r\n\r\n    Assertion failed at WEST_TOPDIR/zephyr/tests/arch/riscv/fpu_sharing/src/main.c:91: new_thread_check: (fpu_is_clean() is false)\r\nFPU not clean after read\r\n FAIL - test_multi_thread_interaction in 0.015 seconds\r\n===================================================================\r\nSTART - test_thread_vs_exc_interaction\r\n\r\n    Assertion failed at WEST_TOPDIR/zephyr/tests/arch/riscv/fpu_sharing/src/main.c:316: riscv_fpu_sharing_test_thread_vs_exc_interaction: fpu_is_clean() is false\r\n\r\n FAIL - test_thread_vs_exc_interaction in 0.015 seconds\r\n===================================================================\r\nTESTSUITE riscv_fpu_sharing failed.\r\n\r\n------ TESTSUITE SUMMARY START ------\r\n\r\nSUITE FAIL -  25.00% [riscv_fpu_sharing]: pass = 1, fail = 3, skip = 0, total = 4 duration = 0.044 seconds\r\n - FAIL - [riscv_fpu_sharing.test_basics] duration = 0.013 seconds\r\n - PASS - [riscv_fpu_sharing.test_fp_insn_trap] duration = 0.001 seconds\r\n - FAIL - [riscv_fpu_sharing.test_multi_thread_interaction] duration = 0.015 seconds\r\n - FAIL - [riscv_fpu_sharing.test_thread_vs_exc_interaction] duration = 0.015 seconds\r\n\r\n------ TESTSUITE SUMMARY END ------\r\n\r\n===================================================================\r\nRunID: ebd0d3bcecc412a01dfd654da3e82fe6\r\nPROJECT EXECUTION FAILED\r\n",
+            "reason":"Testsuite failed",
+            "execution_time":"5.80",
+            "build_time":"78.37",
+            "testcases":[
+                {
+                    "identifier":"arch.riscv.fpu_sharing.riscv_fpu_sharing.fp_insn_trap",
+                    "execution_time":"0.00",
+                    "status":"passed"
+                },
+                {
+                    "identifier":"arch.riscv.fpu_sharing.riscv_fpu_sharing.thread_vs_exc_interaction",
+                    "execution_time":"0.01",
+                    "status":"failed"
+                },
+                {
+                    "identifier":"arch.riscv.fpu_sharing.riscv_fpu_sharing.multi_thread_interaction",
+                    "execution_time":"0.01",
+                    "status":"failed"
+                },
+                {
+                    "identifier":"arch.riscv.fpu_sharing.riscv_fpu_sharing.basics",
+                    "execution_time":"0.01",
+                    "status":"failed"
+                }
+            ]
+        },
+        {
+            "name":"sample.basic.helloworld",
+            "arch":"riscv",
+            "platform":"ai_m61_32s_kit@DEFAULT/bl618m05q2i",
+            "path":"samples/hello_world",
+            "run_id":"7a3a9fe7a0eee1e96ce5a3d92c697ce9",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00",
+            "status":"failed",
+            "log":"",
+            "reason":"Unknown Error",
+            "execution_time":"64.10",
+            "build_time":"74.61",
+            "testcases":[
+                {
+                    "identifier":"sample.basic.helloworld",
+                    "execution_time":"64.10",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                }
+            ]
+        },
+        {
+            "name":"sample.basic.helloworld",
+            "arch":"riscv",
+            "platform":"ai_wb2_12f_kit/bl602c00q2i",
+            "path":"samples/hello_world",
+            "run_id":"191a91e2187c1bfc0d8ee7ffd42eb678",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00",
+            "status":"passed",
+            "execution_time":"5.59",
+            "build_time":"72.62",
+            "testcases":[
+                {
+                    "identifier":"sample.basic.helloworld",
+                    "execution_time":"5.59",
+                    "status":"passed"
+                }
+            ]
+        },
+        {
+            "name":"sample.kernel.philosopher",
+            "arch":"riscv",
+            "platform":"ai_m61_32s_kit@DEFAULT/bl618m05q2i",
+            "path":"samples/philosophers",
+            "run_id":"6187ac87d8b216a9e00810a745c9152e",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_56F3013862-if00",
+            "status":"failed",
+            "log":"",
+            "reason":"Unknown Error",
+            "execution_time":"64.00",
+            "build_time":"75.66",
+            "testcases":[
+                {
+                    "identifier":"sample.kernel.philosopher",
+                    "execution_time":"64.00",
+                    "status":"blocked",
+                    "reason":"Unknown Error"
+                }
+            ]
+        },
+        {
+            "name":"sample.kernel.philosopher",
+            "arch":"riscv",
+            "platform":"ai_wb2_12f_kit/bl602c00q2i",
+            "path":"samples/philosophers",
+            "run_id":"04781a25f6530441562c4570e4bd3fb0",
+            "runnable":true,
+            "retries":0,
+            "toolchain":"zephyr/gnu",
+            "dut":"/dev/serial/by-id/usb-1a86_USB_Single_Serial_5734005368-if00",
+            "status":"passed",
+            "execution_time":"5.30",
+            "build_time":"74.06",
+            "testcases":[
+                {
+                    "identifier":"sample.kernel.philosopher",
+                    "execution_time":"5.30",
+                    "status":"passed"
+                }
+            ]
+        }
+    ]
+}
